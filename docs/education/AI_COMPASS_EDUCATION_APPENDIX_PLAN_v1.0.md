@@ -4,11 +4,48 @@ Status: **DESIGN BASELINE**
 
 ## Goal
 
-The manuscript explains. The educational appendices make learners do something with the ideas.
+The manuscript explains. The educational appendices make learners use, compare, recall, and apply the ideas.
 
 The appendices should support teacher training, university instruction, high-school learning, and simplified middle/upper-elementary activities without rewriting the core concepts into separate competing versions.
 
+## Highest-priority appendix: EDU-00 Glossary
+
+The glossary is the first educational appendix and the main reference layer for the entire project.
+
+It should not be a flat dictionary. It should help a reader answer three practical questions:
+
+1. 이 말은 정확히 무엇을 뜻하는가?
+2. 무엇과 자주 헷갈리는가?
+3. AI Compass의 어느 질문과 연결되는가?
+
+Each glossary entry should support:
+- Korean term
+- English term / acronym
+- one-line understanding
+- precise definition at manuscript level
+- why it matters
+- common misconception
+- easily confused term(s)
+- related Compass layer/question
+- related term links
+- optional example
+- source section/page reference
+
+The glossary should have multiple lookup routes:
+- 가나다순 / A–Z
+- six Compass questions / layers
+- confusing pairs
+- essential/core vs deeper/advanced
+
+Appendix A의 '헷갈리는 용어 15쌍'은 glossary의 별도 비교 인덱스로 흡수한다. 기존 15쌍은 삭제하지 않고, 용어집 안에서 상호 링크되는 핵심 비교표로 유지한다.
+
 ## Appendix Set
+
+### EDU-00 Glossary
+- highest priority
+- manuscript terminology as single source of truth
+- cross-linked with all other appendices and PWA Learning Lab
+- publication appendix can carry a compact version; education package can carry the expanded version
 
 ### EDU-01 Learner Workbook
 - 12–20 pages
@@ -106,6 +143,7 @@ Suggested folders:
 
 ```text
 docs/education/
+├─ glossary/
 ├─ workbook/
 ├─ instructor-guide/
 ├─ case-cards/
@@ -117,24 +155,29 @@ docs/education/
 ## Priority order
 
 Phase A:
-1. Case Cards
-2. Autonomy Lab
-3. Reversibility Activity
-4. Instructor Guide skeleton
+1. Glossary architecture + term inventory
+2. Expanded glossary draft
+3. Confusing-pairs comparison index
+4. Case Cards
+5. Autonomy Lab
+6. Reversibility Activity
 
 Phase B:
-5. Learner Workbook
-6. Trust Boundary activity
-7. Tool Permission activity
-8. Misconception cards
+7. Instructor Guide
+8. Learner Workbook
+9. Trust Boundary activity
+10. Tool Permission activity
+11. Misconception cards
 
 Phase C:
-9. Quiz bank
-10. polished printable package
+12. Quiz bank
+13. polished printable package
 
 ## Design principle
 
-Every activity must map back to a source concept in the frozen manuscript, but it should create an experience rather than merely repeat paragraphs.
+Every activity and every glossary definition must map back to a source concept in the frozen manuscript.
+
+The glossary explains and connects; activities create an experience rather than merely repeat paragraphs.
 
 Examples:
 - Context → find the hidden instruction
