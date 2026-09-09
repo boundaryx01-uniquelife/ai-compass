@@ -31,8 +31,8 @@ python -m http.server 8877 --bind 127.0.0.1
 | `#/learn/case/drive-agent` | 공유 드라이브 사례 |
 | `#/read/:part/page-:n` | Part/페이지 section 탐색, 총 53개 |
 | `#/read` | 마지막 읽기 위치 또는 첫 페이지 |
-| `#/teach` | 첫 입문 덱 |
-| `#/teach/compass-intro/:slide` | 지정 슬라이드 |
+| `#/teach` | 원본 42장 강의 |
+| `#/teach/lecture-v01/slide-01` | 지정 슬라이드 |
 
 READ part 값: `front`, `part-0`~`part-7`, `appendices`, `appendix-a`~`appendix-g`.
 예: `#/read/part-4/page-23`, `#/read/appendix-g/page-52`.
@@ -58,17 +58,16 @@ EXPLORE 역시 canonical Glossary JSON을 읽어 표시하며 정의 사본을 �
 
 ## Teacher Deck
 
-12장 입문용 덱입니다. 42장 60–90분 본강의 완성본으로 표시하지 않습니다.
-
-- 학생 화면: 한 장의 핵심 문장과 구조/키워드.
-- Audience Mode: 교사 패널을 DOM에서 제외합니다. 새로 열거나 다른 모듈에서 돌아오면 Audience가 기본입니다.
-- Teacher Mode: Quick Note, Full Teaching Script, 예상 시간, 질문, 오개념, 강조, 원고/용어/사례 링크.
-- 이전/다음 버튼, 선택기, 좌우 방향키로 이동합니다.
-- 전체화면은 학생용 article만 대상으로 합니다. 교사 노트는 화면에 포함되지 않습니다. Esc로 해제합니다.
-- 교사 노트는 공개 교육 콘텐츠로서 숨김 UI이며 인증이나 접근 제한 장치는 아닙니다.
-- `full_script`는 **향후 PPTX Speaker Notes에 직접 사용할 문자열**입니다. PPTX 생성은 이번 범위에 없습니다.
-- 원고 발췌와 수업용 도입·질문·오개념 교정·연결 문장을 구분하고, 슬라이드별 source file/page/excerpt를 보존합니다.
-- 수업용 파생 초안이며 기존 승인된 PPTX를 이관했다고 주장하지 않습니다.
+제공된 AI_Compass_Lecture_Deck_v0.1 원본 **42장 전체**를 이관했습니다.
+- 학생 화면은 PDF 원본 배치를 WebP로 보존합니다. PPTX 텍스트도 데이터에 보존합니다.
+- PPTX 발표자 노트 17장만 Quick Note로 그대로 표시합니다. 나머지 25장은 미제공입니다.
+- Full Teaching Script, 별도 질문/오개념/예상 시간 필드는 원본에 없어 null로 유지합니다.
+- Audience Mode에서는 교사 패널을 DOM에서 제외합니다. Teacher Mode에서 실제 노트와 미제공 상태를 확인합니다.
+- 전체화면은 학생 화면만 표시합니다. 이전/다음, 선택기, 좌우 방향키를 지원합니다.
+- Teacher Mode의 원문 텍스트 및 크게 열기 링크로 작은 화면을 보완합니다.
+- source에 PPTX/PDF SHA256, 슬라이드 번호, XML 경로, 원본 노트를 기록합니다. 향후 Speaker Notes 작업용 full_script 필드는 보존하되 내용을 발명하지 않습니다.
+- 기존 compass-intro 주소는 대응하는 원본 슬라이드로 연결됩니다.
+- import-lecture.py가 원본에서 42장 데이터와 assets/lecture-v01 이미지를 생성합니다. 재생성에는 PyMuPDF, Pillow, lxml이 필요합니다.
 
 ## Case Lab
 
@@ -80,7 +79,7 @@ EXPLORE 역시 canonical Glossary JSON을 읽어 표시하며 정의 사본을 �
 - `router.js`, `storage.js`, `manuscript.js`: 경로, Hub 로컬 저장, 원고 렌더링
 - `data/hub.json`: 주제와 연결 메타데이터
 - `data/ebook.json`: 53페이지 출처 매핑
-- `data/teacher-deck.json`: 12장 학생/교사 콘텐츠와 출처
+- `data/teacher-deck.json`: 42장 원본 화면/텍스트/교사 노트와 출처
 - `data/cases.json`: 세 사례 조사 데이터
 - `build-data.py`: 원고 기반 매핑 및 교육 데이터 생성기
 - `manifest.webmanifest`, `service-worker.js`, SVG/PNG 아이콘: 설치·오프라인
@@ -105,7 +104,7 @@ node pwa/hub/tests/acceptance.cjs
 
 ## 오프라인 / 배포 경계
 
-Hub SW는 Hub 파일·네 데이터·canonical Glossary JSON·여섯 원고를 캐시합니다. 별도 scope로 기존 Glossary SW도 등록하여 아직 방문하지 않은 Glossary 화면까지 오프라인 준비합니다. 준비 완료 상태를 확인한 뒤 연결을 끊으세요.
+Hub SW는 Hub 파일·네 데이터·canonical Glossary JSON·여섯 원고와 강의 이미지 42장을 캐시합니다. 별도 scope로 기존 Glossary SW도 등록하여 아직 방문하지 않은 Glossary 화면까지 오프라인 준비합니다. 준비 완료 상태를 확인한 뒤 연결을 끊으세요.
 
 Hub SW의 정리 대상은 `ai-compass-hub-v2-`로 한정합니다. 다른 PWA 캐시를 제거하지 않습니다. 리소스 변경 시 캐시 버전을 올려야 하며 새 버전은 기존 Hub 탭을 닫은 뒤 활성화됩니다.
 
@@ -117,7 +116,7 @@ Pages workflow는 변경하지 않았습니다. 정적 호스팅 시 저장소 �
 
 - 본문: 53/53페이지 전체 이관. Appendix G의 제품 정보는 의도적으로 미작성.
 - 원본 PDF의 정교한 도식·표 레이아웃: 전사 순서로 표시, 시각 복원은 미이관.
-- Teacher Deck: 첫 12장 수업용 파생 덱만 구현. 42장 본강의 전체, 다른 대상별 덱, PPTX 및 Speaker Notes 파일 생성은 미이관.
+- Teacher Deck: 42장 전체 이관. 원본에 없는 Quick Note 25장, Full Script 42장, 별도 질문/오개념은 미제공. 새 PPTX 생성은 하지 않았습니다.
 - 실제 교사의 스크립트 소요 시간·수업 문장 편집 검수 필요.
 - 기존 Glossary의 원고↔JSON 축약/누락 편집 이슈는 그대로 보존하며 자동 수정하지 않음.
 - 실기기 홈 화면 설치와 전체 스크린리더 흐름은 별도 수동 확인 필요.

@@ -1,5 +1,5 @@
 {
-  "testedAt": "2026-09-09T12:53:20.456Z",
+  "testedAt": "2026-09-09T22:42:48.228Z",
   "acceptance": [
     {
       "id": 1,
@@ -114,12 +114,14 @@
     {
       "id": 23,
       "title": "Quick Note present",
-      "status": "PASS"
+      "status": "FAIL",
+      "detail": "25 slides have no source notes"
     },
     {
       "id": 24,
       "title": "Full Teaching Script present",
-      "status": "PASS"
+      "status": "FAIL",
+      "detail": "Full scripts absent in supplied source"
     },
     {
       "id": 25,
@@ -134,12 +136,14 @@
     {
       "id": 27,
       "title": "Teacher question visible",
-      "status": "PASS"
+      "status": "FAIL",
+      "detail": "Questions absent in supplied source"
     },
     {
       "id": 28,
       "title": "Misconception visible",
-      "status": "PASS"
+      "status": "FAIL",
+      "detail": "Misconceptions absent in supplied source"
     },
     {
       "id": 29,
@@ -243,7 +247,7 @@
     },
     {
       "scenario": "E",
-      "status": "PASS",
+      "status": "FAIL",
       "acceptance": [
         22,
         23,
