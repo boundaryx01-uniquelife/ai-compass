@@ -1,0 +1,16 @@
+{
+  "id": "./",
+  "name": "AI Compass Glossary",
+  "short_name": "AI Glossary",
+  "lang": "ko",
+  "start_url": "./#/find",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f8f2",
+  "theme_color": "#174f46",
+  "icons": [
+    {"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"},
+    {"src":"./icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"./icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"}
+  ]
+}

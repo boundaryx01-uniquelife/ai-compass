@@ -1,0 +1,29 @@
+{
+  "testedAt": "2026-09-09T05:49:22.848Z",
+  "results": [
+    {
+      "name": "비교 배열 역순에서도 기존 15개 URL·내용·CORE 링크 유지",
+      "status": "PASS"
+    },
+    {
+      "name": "알 수 없는 비교 라벨 명시적 오류",
+      "status": "PASS"
+    },
+    {
+      "name": "중복 비교·다른 쌍 누락 명시적 오류",
+      "status": "PASS"
+    },
+    {
+      "name": "새 퀴즈 ID의 복습 매핑 누락 감지",
+      "status": "PASS"
+    },
+    {
+      "name": "삭제된 퀴즈의 남은 매핑 감지",
+      "status": "PASS"
+    },
+    {
+      "name": "비교 메타데이터의 없는 CORE 참조 감지",
+      "status": "PASS"
+    }
+  ]
+}
