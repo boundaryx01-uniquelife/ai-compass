@@ -1,0 +1,156 @@
+{
+  "testedAt": "2026-09-09T01:15:32.685Z",
+  "browser": "Microsoft Edge / Playwright",
+  "results": [
+    {
+      "id": 1,
+      "name": "JSON 로드 및 형식·버전 검증",
+      "status": "PASS"
+    },
+    {
+      "id": 2,
+      "name": "CORE 30 전체 노출 및 검색",
+      "status": "PASS"
+    },
+    {
+      "id": 3,
+      "name": "15개 비교 접근",
+      "status": "PASS"
+    },
+    {
+      "id": 4,
+      "name": "공급된 퀴즈 전체 사용 가능",
+      "status": "PASS"
+    },
+    {
+      "id": 5,
+      "name": "원본 정의와 화면 내용 일치",
+      "status": "PASS"
+    },
+    {
+      "id": 6,
+      "name": "RAG 한국어·약어·영문 검색",
+      "status": "PASS"
+    },
+    {
+      "id": 7,
+      "name": "MCP 약어·영문 검색",
+      "status": "PASS"
+    },
+    {
+      "id": 8,
+      "name": "샌드박스 검색",
+      "status": "PASS"
+    },
+    {
+      "id": 9,
+      "name": "빈 검색 CORE 목록",
+      "status": "PASS"
+    },
+    {
+      "id": 10,
+      "name": "검색 결과 없음 안내",
+      "status": "PASS"
+    },
+    {
+      "id": 11,
+      "name": "관련 CORE 링크 정확성",
+      "status": "PASS"
+    },
+    {
+      "id": 12,
+      "name": "브라우저 뒤로 가기",
+      "status": "PASS"
+    },
+    {
+      "id": 13,
+      "name": "정적 호스팅 hash 새로고침",
+      "status": "PASS"
+    },
+    {
+      "id": 14,
+      "name": "자동화 / 자율성",
+      "status": "PASS"
+    },
+    {
+      "id": 15,
+      "name": "트리거 / 자율성 단계",
+      "status": "PASS"
+    },
+    {
+      "id": 16,
+      "name": "Prompt Injection / Jailbreak",
+      "status": "PASS"
+    },
+    {
+      "id": 17,
+      "name": "Logging / Observability",
+      "status": "PASS"
+    },
+    {
+      "id": 18,
+      "name": "EXTENDED 정의 임의 생성 없음",
+      "status": "PASS"
+    },
+    {
+      "id": 19,
+      "name": "중복 없는 5문제 세션",
+      "status": "PASS"
+    },
+    {
+      "id": 20,
+      "name": "즉시 피드백·해설 및 오답 연결",
+      "status": "PASS"
+    },
+    {
+      "id": 21,
+      "name": "학습 결과 표현",
+      "status": "PASS"
+    },
+    {
+      "id": 22,
+      "name": "즐겨찾기 새로고침 복원",
+      "status": "PASS"
+    },
+    {
+      "id": 23,
+      "name": "학습 메타데이터 복원",
+      "status": "PASS"
+    },
+    {
+      "id": 24,
+      "name": "손상된 localStorage 안전 복원",
+      "status": "PASS"
+    },
+    {
+      "id": 25,
+      "name": "오프라인 전체 핵심 기능",
+      "status": "PASS"
+    },
+    {
+      "id": 26,
+      "name": "manifest·service worker·캐시",
+      "status": "PASS"
+    },
+    {
+      "id": 27,
+      "name": "모바일 375px·320px 레이아웃",
+      "status": "PASS"
+    },
+    {
+      "id": 28,
+      "name": "키보드 접근·포커스·펼치기",
+      "status": "PASS"
+    },
+    {
+      "id": 29,
+      "name": "Control 별도 횡단 구조",
+      "status": "PASS"
+    },
+    {
+      "id": 30,
+      "name": "외부 런타임·API·서버 의존 없음",
+      "status": "PASS"
+    }
+  ]
+}
