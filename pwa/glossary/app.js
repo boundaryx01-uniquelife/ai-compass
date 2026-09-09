@@ -10,12 +10,28 @@ let favorites = read('favorites', [], validFavorites);
 let learning = read('learning', null, validLearning);
 // UI navigation metadata only. All displayed educational content comes from the frozen JSON.
 const quizTerms = {q1:['rag','hallucination'],q2:['automation','trigger'],q3:['tool-use','harness-runtime'],q4:['mcp','agent'],q5:['context','memory'],q6:['observability'],q7:['sandbox'],q8:['reversibility'],q9:['autonomy','agent'],q10:['control-plane']};
-const pairIds = ['ai-model-ai-service','context-memory','memory-training','rag-fine-tuning','tool-use-api','api-mcp','workflow-agent','automation-autonomy','trigger-autonomy','prompt-injection-jailbreak','hallucination-bias','guardrail-alignment','safety-security','sandbox-permission','logging-observability'];
-const labelMap = {'자율성 단계':'autonomy'};
+const pairKey = pair => JSON.stringify([pair.left, pair.right]);
+// Stable routes and CORE links are keyed by exact frozen label combinations, never array position.
+const pairMetadata = new Map([
+  [['AI 모델','AI 서비스'], 'ai-model-ai-service', ['ai-model','ai-service']],
+  [['컨텍스트','메모리'], 'context-memory', ['context','memory']],
+  [['메모리','학습'], 'memory-training', ['memory','training']],
+  [['RAG','Fine-tuning'], 'rag-fine-tuning', ['rag',null]],
+  [['도구 사용','API'], 'tool-use-api', ['tool-use',null]],
+  [['API','MCP'], 'api-mcp', [null,'mcp']],
+  [['Workflow','Agent'], 'workflow-agent', [null,'agent']],
+  [['자동화','자율성'], 'automation-autonomy', ['automation','autonomy']],
+  [['트리거','자율성 단계'], 'trigger-autonomy', ['trigger','autonomy']],
+  [['Prompt Injection','Jailbreak'], 'prompt-injection-jailbreak', ['prompt-injection',null]],
+  [['환각','편향'], 'hallucination-bias', ['hallucination',null]],
+  [['Guardrail','Alignment'], 'guardrail-alignment', [null,null]],
+  [['Safety','Security'], 'safety-security', [null,null]],
+  [['Sandbox','Permission'], 'sandbox-permission', ['sandbox','permission']],
+  [['Logging','Observability'], 'logging-observability', [null,'observability']],
+].map(([labels,id,termIds]) => [JSON.stringify(labels), {id,termIds}]));
 const badges = term => `<div class="chips"><span class="badge">${escape(term.tier)}</span>${term.layers.map(layer => `<span class="badge ${layer === 'CONTROL' ? 'control' : ''}">${escape(layer)}</span>`).join('')}</div>`;
 const termLink = id => terms.has(id) ? `<a href="#/term/${id}">${escape(terms.get(id).ko)}</a>` : '';
 const card = term => `<a class="card term-card" href="#/term/${term.id}"><h3>${escape(term.ko)}</h3><p class="en">${escape(term.en)}</p>${badges(term)}<p>${escape(term.short)}</p></a>`;
-const findTerm = label => terms.get(labelMap[label]) || data.terms.find(term => [term.ko, term.en, ...term.aliases].some(name => normalize(name) === normalize(label)));
 function validate(value) {
   if (value?.format !== 'ai-compass-glossary' || value.version !== '1.0') throw new Error('지원하지 않는 용어 데이터 형식 또는 버전입니다.');
   if (!Array.isArray(value.terms) || value.terms.length !== 30 || !Array.isArray(value.comparePairs) || value.comparePairs.length !== 15 || !Array.isArray(value.quiz) || value.quiz.length < 5) throw new Error('용어 데이터 구성을 확인해 주세요.');
@@ -26,11 +42,25 @@ function validate(value) {
   }
   if (value.terms.some(term => term.related.some(id => !ids.has(id)))) throw new Error('관련 용어 ID가 일치하지 않습니다.');
   if (value.comparePairs.some(pair => !['left','right','oneLine'].every(key => typeof pair[key] === 'string'))) throw new Error('비교 데이터가 올바르지 않습니다.');
+  const seenPairs = new Set();
+  const seenRoutes = new Set();
+  for (const pair of value.comparePairs) {
+    const key = pairKey(pair);
+    const metadata = pairMetadata.get(key);
+    if (!metadata) throw new Error('비교 쌍 라벨이 알려진 조합과 일치하지 않습니다.');
+    if (seenPairs.has(key) || seenRoutes.has(metadata.id)) throw new Error('비교 쌍 또는 경로가 중복되었습니다.');
+    if (metadata.termIds.some(id => id !== null && !ids.has(id))) throw new Error('비교 쌍의 관련 용어 ID가 일치하지 않습니다.');
+    seenPairs.add(key);
+    seenRoutes.add(metadata.id);
+  }
+  if (seenPairs.size !== pairMetadata.size) throw new Error('필수 비교 쌍이 누락되었습니다.');
   const quizIds = new Set();
   for (const q of value.quiz) {
     if (typeof q.id !== 'string' || quizIds.has(q.id) || typeof q.prompt !== 'string' || typeof q.explanation !== 'string' || !(q.type === 'trueFalse' && typeof q.answer === 'boolean' || q.type === 'choice' && Array.isArray(q.choices) && q.choices.every(x => typeof x === 'string') && q.choices.includes(q.answer))) throw new Error('학습 데이터가 올바르지 않습니다.');
     quizIds.add(q.id);
+    if (!Object.hasOwn(quizTerms,q.id) || !quizTerms[q.id].length || quizTerms[q.id].some(id => !ids.has(id))) throw new Error('퀴즈 복습 용어 매핑이 없거나 올바르지 않습니다.');
   }
+  if (Object.keys(quizTerms).some(id => !quizIds.has(id))) throw new Error('퀴즈 복습 매핑에 대응하는 문항이 없습니다.');
   return value;
 }
 function renderFind() {
@@ -61,7 +91,7 @@ function renderCompare(id) {
   if (id) {
     const pair = pairs.get(id);
     if (!pair) return renderMissing();
-    main.innerHTML = `<a class="back" href="#/compare">← 비교 목록</a><p class="eyebrow">COMPARE CONCEPTS</p><h1>${escape(pair.left)} <span class="vs">VS</span> ${escape(pair.right)}</h1><div class="distinction"><h2>한 줄 구분</h2>${escape(pair.oneLine)}</div><div class="grid">${[pair.left,pair.right].map(label => { const term = findTerm(label); return `<section class="card"><h2>${escape(label)}</h2>${term ? `<p>${escape(term.short)}</p><div class="chips">${termLink(term.id)}</div>` : '<span class="badge extended">EXTENDED · 상세 카드 준비 중</span>'}</section>`; }).join('')}</div>`;
+    main.innerHTML = `<a class="back" href="#/compare">← 비교 목록</a><p class="eyebrow">COMPARE CONCEPTS</p><h1>${escape(pair.left)} <span class="vs">VS</span> ${escape(pair.right)}</h1><div class="distinction"><h2>한 줄 구분</h2>${escape(pair.oneLine)}</div><div class="grid">${[pair.left,pair.right].map((label,index) => { const term = terms.get(pairMetadata.get(pairKey(pair)).termIds[index]); return `<section class="card"><h2>${escape(label)}</h2>${term ? `<p>${escape(term.short)}</p><div class="chips">${termLink(term.id)}</div>` : '<span class="badge extended">EXTENDED · 상세 카드 준비 중</span>'}</section>`; }).join('')}</div>`;
   } else main.innerHTML = `<p class="eyebrow">COMPARE · 15 PAIRS</p><h1>비슷해 보이지만 다른 AI 용어</h1><p>이름이 비슷해서가 아니라, 섞으면 판단이 틀어지는 쌍을 모았습니다.</p><div class="grid">${[...pairs].map(([key,pair]) => `<a class="card compare-card" href="#/compare/${key}"><div class="pair"><span>${escape(pair.left)}</span><span class="vs">VS</span><span>${escape(pair.right)}</span></div><p>${escape(pair.oneLine)}</p></a>`).join('')}</div>`;
 }
 function startSession() {
@@ -122,7 +152,7 @@ async function load() {
     const response = await fetch(DATA_URL);
     if (!response.ok) throw new Error(`데이터 요청 실패 (${response.status})`);
     data = validate(await response.json()); terms = new Map(data.terms.map(term => [term.id,term]));
-    pairs = new Map(data.comparePairs.map((pair,i) => [pairIds[i],pair]));
+    pairs = new Map(data.comparePairs.map(pair => [pairMetadata.get(pairKey(pair)).id,pair]));
     favorites = favorites.filter(id => terms.has(id));
     if (!location.hash) history.replaceState(null,'','#/find');
     route();

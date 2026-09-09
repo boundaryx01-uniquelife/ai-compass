@@ -1,4 +1,4 @@
-const CACHE = 'ai-compass-glossary-v1-2';
+const CACHE = 'ai-compass-glossary-v1-3';
 const SHELL = ['./', './index.html', './styles.css', './app.js', './storage.js', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png', '../../docs/education/glossary/AI_COMPASS_GLOSSARY_DATA_v1.0.json'];
 const URLS = SHELL.map(path => new URL(path, self.location).href);
 self.addEventListener('install', event => {

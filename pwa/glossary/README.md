@@ -33,10 +33,15 @@ python -m http.server 8765 --bind 127.0.0.1
 - `icon.svg`, `icon-192.png`, `icon-512.png`: 로컬 앱 아이콘
 - `acceptance.cjs`: 개발용 Edge / Playwright 검증 스크립트
 - `acceptance-results.json`: 30개 acceptance 실행 결과
+- `mapping-regression.cjs`, `mapping-regression-results.json`: 비교 순서·매핑 오류 6개 회귀 검증
 - `ACCEPTANCE.md`: 항목별 검증표 및 한계
 - `mobile-check.png`, `desktop-check.png`: 브라우저 검증 화면
 
 콘텐츠는 `../../docs/education/glossary/AI_COMPASS_GLOSSARY_DATA_v1.0.json` 한 곳에서 직접 로드합니다. 별도 사본이나 생성 정의는 없습니다. `app.js`의 비교 경로와 퀴즈 관련 용어 ID는 UI 탐색용 메타데이터입니다. JSON에 없는 `왜 중요한가`를 임의로 생성하지 않습니다.
+
+비교 경로는 배열 순서 대신 정확한 왼쪽·오른쪽 라벨 조합으로 결정합니다. 알 수 없는 라벨, 중복 비교, 누락된 비교, 잘못된 CORE 참조, 퀴즈 복습 매핑의 누락은 로드 단계에서 오류로 표시합니다. 기존 비교 URL은 유지합니다.
+
+편집 확인 사항: 에이전트의 `Goal → Observe → Decide/Plan → Act → Observe Result → 반복` 문장은 CORE30 원고에 있으나 JSON 최초 추가 커밋 `037b6bc`부터 없습니다. PWA 구현 과정에서 삭제된 문장은 아닙니다. 커밋 기록에는 축약 의도가 설명되어 있지 않아, 의도적 축약인지 유실인지는 콘텐츠 편집 확인이 필요합니다. 원본은 변경하지 않았습니다.
 
 ## 집 ↔ 사무실 이어하기
 
@@ -72,6 +77,7 @@ git push origin feat/glossary-pwa-v1
 ```powershell
 $env:PLAYWRIGHT_MODULE='C:/Users/user/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'
 node pwa/glossary/acceptance.cjs
+node pwa/glossary/mapping-regression.cjs
 ```
 
 다른 컴퓨터에서 Playwright가 일반 모듈로 설치되어 있다면 환경변수 없이 실행할 수 있습니다. 검증 결과 JSON과 PNG는 재실행 시 갱신됩니다.
