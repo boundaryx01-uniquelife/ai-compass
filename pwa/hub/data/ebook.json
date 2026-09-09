@@ -1,0 +1,789 @@
+{
+  "version": "1.0",
+  "sourceRoot": "../../docs/manuscript/",
+  "sources": [
+    {
+      "file": "00_FRONT_PART0_PART1.md",
+      "sha256": "f1ba2ea425e4ab3e456b95df03918ed2ea275e11d410ce30258241f608d2034a"
+    },
+    {
+      "file": "01_PART2_PART3.md",
+      "sha256": "8408a459a6f20be8a74cb11de4f307fd7e48b9e7fd23c1e1cb3953b8e07d6208"
+    },
+    {
+      "file": "02_PART4.md",
+      "sha256": "f912d702a0b646f0578689d6818cf59fad13b663c0c5b9520aa6732d24d5ece9"
+    },
+    {
+      "file": "03_PART5_PART6.md",
+      "sha256": "fe663da50603e19e04062dfd0010030d4a875f1887d50a8611cd08b3266e56e1"
+    },
+    {
+      "file": "04_PART7.md",
+      "sha256": "688bfa0740dd9ac171c183550312c68098621ce6ae7e03a790ac6173c31a89fa"
+    },
+    {
+      "file": "05_APPENDICES.md",
+      "sha256": "398f43dec034c2f149c8006dfa9f906732d76acdcc83d34748d3986fa933bbb2"
+    }
+  ],
+  "sections": [
+    {
+      "part": "front",
+      "partTitle": "시작",
+      "id": "page-1",
+      "page": 1,
+      "title": "시작 · 1쪽",
+      "source": "00_FRONT_PART0_PART1.md",
+      "textSha256": "2802f3af7111762b63bd2eb95b293966a7a5ef7b67ac589df11797885ef69c7f",
+      "glossary_links": [
+        "ai-system"
+      ]
+    },
+    {
+      "part": "front",
+      "partTitle": "시작",
+      "id": "page-2",
+      "page": 2,
+      "title": "시작 · 2쪽",
+      "source": "00_FRONT_PART0_PART1.md",
+      "textSha256": "96d9e73beea4771c70d01a963c9f3676689a0af7720e833244d423c0684c91d4",
+      "glossary_links": [
+        "ai-system"
+      ]
+    },
+    {
+      "part": "part-0",
+      "partTitle": "PART 0 · AI를 보는 새로운 방법",
+      "id": "page-3",
+      "page": 3,
+      "title": "PART 0 · AI를 보는 새로운 방법 · 3쪽",
+      "source": "00_FRONT_PART0_PART1.md",
+      "textSha256": "8e484ba23b96e582175b92a1943e73441ac39ca9e928516cf07453bb55bad645",
+      "glossary_links": [
+        "ai-model",
+        "ai-service",
+        "agent",
+        "control-plane"
+      ]
+    },
+    {
+      "part": "part-0",
+      "partTitle": "PART 0 · AI를 보는 새로운 방법",
+      "id": "page-4",
+      "page": 4,
+      "title": "PART 0 · AI를 보는 새로운 방법 · 4쪽",
+      "source": "00_FRONT_PART0_PART1.md",
+      "textSha256": "36ac31bcf149642b3a357196a2bd00f5d919ee628afc4c9769160fe1fb7f5ccf",
+      "glossary_links": [
+        "ai-model",
+        "ai-service",
+        "agent",
+        "control-plane"
+      ]
+    },
+    {
+      "part": "part-0",
+      "partTitle": "PART 0 · AI를 보는 새로운 방법",
+      "id": "page-5",
+      "page": 5,
+      "title": "PART 0 · AI를 보는 새로운 방법 · 5쪽",
+      "source": "00_FRONT_PART0_PART1.md",
+      "textSha256": "5987cd7e490a0522fdac4ff835e101c48ea68dcdd8968b1ece9a55d16c4fae4c",
+      "glossary_links": [
+        "ai-model",
+        "ai-service",
+        "agent",
+        "control-plane"
+      ]
+    },
+    {
+      "part": "part-1",
+      "partTitle": "PART 1 · MODEL",
+      "id": "page-6",
+      "page": 6,
+      "title": "PART 1 · MODEL · 6쪽",
+      "source": "00_FRONT_PART0_PART1.md",
+      "textSha256": "2080701d4deae32e232db5addc3b8631dad3eea47beeddcf7434661150c0d23b",
+      "glossary_links": [
+        "training",
+        "inference",
+        "hallucination"
+      ]
+    },
+    {
+      "part": "part-1",
+      "partTitle": "PART 1 · MODEL",
+      "id": "page-7",
+      "page": 7,
+      "title": "PART 1 · MODEL · 7쪽",
+      "source": "00_FRONT_PART0_PART1.md",
+      "textSha256": "6cd8096bea36cb8997e3a05f099cf8e307949fc45270989146768fcce68b6d93",
+      "glossary_links": [
+        "training",
+        "inference",
+        "hallucination"
+      ]
+    },
+    {
+      "part": "part-1",
+      "partTitle": "PART 1 · MODEL",
+      "id": "page-8",
+      "page": 8,
+      "title": "PART 1 · MODEL · 8쪽",
+      "source": "00_FRONT_PART0_PART1.md",
+      "textSha256": "445bc63195ea574d371c9c07bed618b929ff18217c623f8f47d3e1102b87cdf5",
+      "glossary_links": [
+        "training",
+        "inference",
+        "hallucination"
+      ]
+    },
+    {
+      "part": "part-1",
+      "partTitle": "PART 1 · MODEL",
+      "id": "page-9",
+      "page": 9,
+      "title": "PART 1 · MODEL · 9쪽",
+      "source": "00_FRONT_PART0_PART1.md",
+      "textSha256": "92f116a314287d6b5172c3064723c3bbf541b3005d91008608e66cd0ddb465c2",
+      "glossary_links": [
+        "training",
+        "inference",
+        "hallucination"
+      ]
+    },
+    {
+      "part": "part-1",
+      "partTitle": "PART 1 · MODEL",
+      "id": "page-10",
+      "page": 10,
+      "title": "PART 1 · MODEL · 10쪽",
+      "source": "00_FRONT_PART0_PART1.md",
+      "textSha256": "edf22c1550028a77ff2673a909563e4c28b30d066e050831012b5feed3277bd5",
+      "glossary_links": [
+        "training",
+        "inference",
+        "hallucination"
+      ]
+    },
+    {
+      "part": "part-2",
+      "partTitle": "PART 2 · CONTEXT",
+      "id": "page-11",
+      "page": 11,
+      "title": "PART 2 · CONTEXT · 11쪽",
+      "source": "01_PART2_PART3.md",
+      "textSha256": "a2ba5ee8667a0f0873653e4ea2adc046f395cd7272c808f29639b1e0cc9054cf",
+      "glossary_links": [
+        "context",
+        "rag",
+        "trust-boundary",
+        "prompt-injection"
+      ]
+    },
+    {
+      "part": "part-2",
+      "partTitle": "PART 2 · CONTEXT",
+      "id": "page-12",
+      "page": 12,
+      "title": "PART 2 · CONTEXT · 12쪽",
+      "source": "01_PART2_PART3.md",
+      "textSha256": "1fe57689253a0086d3816d1e23c9ba43ca9ec49bb0afaa9a9cd3038a78bd7556",
+      "glossary_links": [
+        "context",
+        "rag",
+        "trust-boundary",
+        "prompt-injection"
+      ]
+    },
+    {
+      "part": "part-2",
+      "partTitle": "PART 2 · CONTEXT",
+      "id": "page-13",
+      "page": 13,
+      "title": "PART 2 · CONTEXT · 13쪽",
+      "source": "01_PART2_PART3.md",
+      "textSha256": "14bc483c424b0e66aac3c08dc5f2eac7586d999ae19960be6c14e0046341a92e",
+      "glossary_links": [
+        "context",
+        "rag",
+        "trust-boundary",
+        "prompt-injection"
+      ]
+    },
+    {
+      "part": "part-2",
+      "partTitle": "PART 2 · CONTEXT",
+      "id": "page-14",
+      "page": 14,
+      "title": "PART 2 · CONTEXT · 14쪽",
+      "source": "01_PART2_PART3.md",
+      "textSha256": "0d023a119d3a3aba890d998b667ee6d2515f9736030443ef3e6a93cdbd560a65",
+      "glossary_links": [
+        "context",
+        "rag",
+        "trust-boundary",
+        "prompt-injection"
+      ]
+    },
+    {
+      "part": "part-2",
+      "partTitle": "PART 2 · CONTEXT",
+      "id": "page-15",
+      "page": 15,
+      "title": "PART 2 · CONTEXT · 15쪽",
+      "source": "01_PART2_PART3.md",
+      "textSha256": "b0b64d0469d463149a282328ba94b8a6d9f490c1ce0b68ffc1dd793b730dc21a",
+      "glossary_links": [
+        "context",
+        "rag",
+        "trust-boundary",
+        "prompt-injection"
+      ]
+    },
+    {
+      "part": "part-3",
+      "partTitle": "PART 3 · ACTION / TOOLS",
+      "id": "page-16",
+      "page": 16,
+      "title": "PART 3 · ACTION / TOOLS · 16쪽",
+      "source": "01_PART2_PART3.md",
+      "textSha256": "431699baa27b53a2acb75ecce257cb16423a923114234f51bd59e520dd984b34",
+      "glossary_links": [
+        "tool-use",
+        "harness-runtime",
+        "mcp",
+        "permission"
+      ]
+    },
+    {
+      "part": "part-3",
+      "partTitle": "PART 3 · ACTION / TOOLS",
+      "id": "page-17",
+      "page": 17,
+      "title": "PART 3 · ACTION / TOOLS · 17쪽",
+      "source": "01_PART2_PART3.md",
+      "textSha256": "a8167540197f5a1e145e071369d7d32f45a4eec2bea546965d7e2060f66a7987",
+      "glossary_links": [
+        "tool-use",
+        "harness-runtime",
+        "mcp",
+        "permission"
+      ]
+    },
+    {
+      "part": "part-3",
+      "partTitle": "PART 3 · ACTION / TOOLS",
+      "id": "page-18",
+      "page": 18,
+      "title": "PART 3 · ACTION / TOOLS · 18쪽",
+      "source": "01_PART2_PART3.md",
+      "textSha256": "7c853c21120602a068488a526a4a9be40ec7398203f29d33c6aa36f6bf68771e",
+      "glossary_links": [
+        "tool-use",
+        "harness-runtime",
+        "mcp",
+        "permission"
+      ]
+    },
+    {
+      "part": "part-3",
+      "partTitle": "PART 3 · ACTION / TOOLS",
+      "id": "page-19",
+      "page": 19,
+      "title": "PART 3 · ACTION / TOOLS · 19쪽",
+      "source": "01_PART2_PART3.md",
+      "textSha256": "24969bc69898222b6393199c143dcab89072e9b9549399c0e77211fa8d0c90fa",
+      "glossary_links": [
+        "tool-use",
+        "harness-runtime",
+        "mcp",
+        "permission"
+      ]
+    },
+    {
+      "part": "part-3",
+      "partTitle": "PART 3 · ACTION / TOOLS",
+      "id": "page-20",
+      "page": 20,
+      "title": "PART 3 · ACTION / TOOLS · 20쪽",
+      "source": "01_PART2_PART3.md",
+      "textSha256": "c49f7bb7d604cfea0613b90efcf26c2b4b176d4da5233043214afc83d5e15f7b",
+      "glossary_links": [
+        "tool-use",
+        "harness-runtime",
+        "mcp",
+        "permission"
+      ]
+    },
+    {
+      "part": "part-4",
+      "partTitle": "PART 4 · AUTONOMY",
+      "id": "page-21",
+      "page": 21,
+      "title": "PART 4 · AUTONOMY · 21쪽",
+      "source": "02_PART4.md",
+      "textSha256": "e21bba9dcf65ff7337c0788c6b41b36f455cc43b2aa88f051c94003835e6280f",
+      "glossary_links": [
+        "autonomy",
+        "automation",
+        "trigger"
+      ]
+    },
+    {
+      "part": "part-4",
+      "partTitle": "PART 4 · AUTONOMY",
+      "id": "page-22",
+      "page": 22,
+      "title": "PART 4 · AUTONOMY · 22쪽",
+      "source": "02_PART4.md",
+      "textSha256": "a054fe7332794cb2c4efaa7ab543137050f7c4ed3bf4368847837c8e5a1e9dcf",
+      "glossary_links": [
+        "autonomy",
+        "automation",
+        "trigger"
+      ]
+    },
+    {
+      "part": "part-4",
+      "partTitle": "PART 4 · AUTONOMY",
+      "id": "page-23",
+      "page": 23,
+      "title": "PART 4 · AUTONOMY · 23쪽",
+      "source": "02_PART4.md",
+      "textSha256": "9b83770fd33bcff0f53b7a233217051882c4803b39a3f52a85d35941010cc609",
+      "glossary_links": [
+        "autonomy",
+        "automation",
+        "trigger"
+      ]
+    },
+    {
+      "part": "part-4",
+      "partTitle": "PART 4 · AUTONOMY",
+      "id": "page-24",
+      "page": 24,
+      "title": "PART 4 · AUTONOMY · 24쪽",
+      "source": "02_PART4.md",
+      "textSha256": "916304fa338521a878bef117d507f91c517d6a5600ccd6b6c034a950b0727d64",
+      "glossary_links": [
+        "autonomy",
+        "automation",
+        "trigger"
+      ]
+    },
+    {
+      "part": "part-4",
+      "partTitle": "PART 4 · AUTONOMY",
+      "id": "page-25",
+      "page": 25,
+      "title": "PART 4 · AUTONOMY · 25쪽",
+      "source": "02_PART4.md",
+      "textSha256": "c1f8d756b1c0a7811a12a1db4ed9112c9ccd496cbb4ff982d043d90d79d809ed",
+      "glossary_links": [
+        "autonomy",
+        "automation",
+        "trigger"
+      ]
+    },
+    {
+      "part": "part-5",
+      "partTitle": "PART 5 · CONTROL PLANE",
+      "id": "page-26",
+      "page": 26,
+      "title": "PART 5 · CONTROL PLANE · 26쪽",
+      "source": "03_PART5_PART6.md",
+      "textSha256": "a1075e169d52ed229741dfddf4eb53b4e850414a18d5aad3421f7e6392476c26",
+      "glossary_links": [
+        "control-plane",
+        "hitl",
+        "observability",
+        "reversibility"
+      ]
+    },
+    {
+      "part": "part-5",
+      "partTitle": "PART 5 · CONTROL PLANE",
+      "id": "page-27",
+      "page": 27,
+      "title": "PART 5 · CONTROL PLANE · 27쪽",
+      "source": "03_PART5_PART6.md",
+      "textSha256": "c578b954f1b1b45acfca5b0db30a8ab2dd58401297bc939b66fdc632d2baefb5",
+      "glossary_links": [
+        "control-plane",
+        "hitl",
+        "observability",
+        "reversibility"
+      ]
+    },
+    {
+      "part": "part-5",
+      "partTitle": "PART 5 · CONTROL PLANE",
+      "id": "page-28",
+      "page": 28,
+      "title": "PART 5 · CONTROL PLANE · 28쪽",
+      "source": "03_PART5_PART6.md",
+      "textSha256": "da891bd4d55d570e66de6025f3f6a694db5e87fd19920d9bf8ecd30d83251592",
+      "glossary_links": [
+        "control-plane",
+        "hitl",
+        "observability",
+        "reversibility"
+      ]
+    },
+    {
+      "part": "part-5",
+      "partTitle": "PART 5 · CONTROL PLANE",
+      "id": "page-29",
+      "page": 29,
+      "title": "PART 5 · CONTROL PLANE · 29쪽",
+      "source": "03_PART5_PART6.md",
+      "textSha256": "a926d3e03196dfb186001beb10cdc2591ed08429fade39ecf0be2d8bdd87c77a",
+      "glossary_links": [
+        "control-plane",
+        "hitl",
+        "observability",
+        "reversibility"
+      ]
+    },
+    {
+      "part": "part-6",
+      "partTitle": "PART 6 · CASE LAB",
+      "id": "page-30",
+      "page": 30,
+      "title": "PART 6 · CASE LAB · 30쪽",
+      "source": "03_PART5_PART6.md",
+      "textSha256": "d468af83c04d7d03115dae79b240e38883482c895270f9ba2b76082a8656def7",
+      "glossary_links": [
+        "prompt-injection",
+        "hallucination",
+        "least-privilege"
+      ]
+    },
+    {
+      "part": "part-6",
+      "partTitle": "PART 6 · CASE LAB",
+      "id": "page-31",
+      "page": 31,
+      "title": "PART 6 · CASE LAB · 31쪽",
+      "source": "03_PART5_PART6.md",
+      "textSha256": "855dff403e936dd21040dc02b2e13c0c0efde8488e54d93d8a4a65526aadeee7",
+      "glossary_links": [
+        "prompt-injection",
+        "hallucination",
+        "least-privilege"
+      ]
+    },
+    {
+      "part": "part-6",
+      "partTitle": "PART 6 · CASE LAB",
+      "id": "page-32",
+      "page": 32,
+      "title": "PART 6 · CASE LAB · 32쪽",
+      "source": "03_PART5_PART6.md",
+      "textSha256": "134a7e68809da3d60f2551ffba87757031633a0bb4ba2204f3bce9a2e7adeaba",
+      "glossary_links": [
+        "prompt-injection",
+        "hallucination",
+        "least-privilege"
+      ]
+    },
+    {
+      "part": "part-6",
+      "partTitle": "PART 6 · CASE LAB",
+      "id": "page-33",
+      "page": 33,
+      "title": "PART 6 · CASE LAB · 33쪽",
+      "source": "03_PART5_PART6.md",
+      "textSha256": "1959b833d10dfcdf2d2deb2975e774ce9044aa05293788bcc46a72f645aeef23",
+      "glossary_links": [
+        "prompt-injection",
+        "hallucination",
+        "least-privilege"
+      ]
+    },
+    {
+      "part": "part-6",
+      "partTitle": "PART 6 · CASE LAB",
+      "id": "page-34",
+      "page": 34,
+      "title": "PART 6 · CASE LAB · 34쪽",
+      "source": "03_PART5_PART6.md",
+      "textSha256": "5b623a95a703c66e3389672fd94c224c287b45c73849dadaec73ec632ba0ef5d",
+      "glossary_links": [
+        "prompt-injection",
+        "hallucination",
+        "least-privilege"
+      ]
+    },
+    {
+      "part": "part-7",
+      "partTitle": "PART 7 · ANALYSIS CANVAS",
+      "id": "page-35",
+      "page": 35,
+      "title": "PART 7 · ANALYSIS CANVAS · 35쪽",
+      "source": "04_PART7.md",
+      "textSha256": "be415fda61c9d6a352aaf34bc79c16b249b72bc1f949b996c1ffde385e74bfc1",
+      "glossary_links": [
+        "autonomy",
+        "reversibility"
+      ]
+    },
+    {
+      "part": "part-7",
+      "partTitle": "PART 7 · ANALYSIS CANVAS",
+      "id": "page-36",
+      "page": 36,
+      "title": "PART 7 · ANALYSIS CANVAS · 36쪽",
+      "source": "04_PART7.md",
+      "textSha256": "2a877ef8e6db9ca348ab05d94a7c8baf0ba9d5f5862885d63a3ccd4b3a75d3d4",
+      "glossary_links": [
+        "autonomy",
+        "reversibility"
+      ]
+    },
+    {
+      "part": "part-7",
+      "partTitle": "PART 7 · ANALYSIS CANVAS",
+      "id": "page-37",
+      "page": 37,
+      "title": "PART 7 · ANALYSIS CANVAS · 37쪽",
+      "source": "04_PART7.md",
+      "textSha256": "7a754db9c9c697e1d0e4338fe02c5313f7074341535bb6eb3cd76f81e5b45830",
+      "glossary_links": [
+        "autonomy",
+        "reversibility"
+      ]
+    },
+    {
+      "part": "part-7",
+      "partTitle": "PART 7 · ANALYSIS CANVAS",
+      "id": "page-38",
+      "page": 38,
+      "title": "PART 7 · ANALYSIS CANVAS · 38쪽",
+      "source": "04_PART7.md",
+      "textSha256": "bd88317befed8eebe982747ef1924a05b5d5fbc0f1c0c47dfd5705ae1d5bdfd4",
+      "glossary_links": [
+        "autonomy",
+        "reversibility"
+      ]
+    },
+    {
+      "part": "part-7",
+      "partTitle": "PART 7 · ANALYSIS CANVAS",
+      "id": "page-39",
+      "page": 39,
+      "title": "PART 7 · ANALYSIS CANVAS · 39쪽",
+      "source": "04_PART7.md",
+      "textSha256": "700ceac158d60e3277ee16b5f503b6b331c6cc6428ac1d61e6c9548c89502376",
+      "glossary_links": [
+        "autonomy",
+        "reversibility"
+      ]
+    },
+    {
+      "part": "appendices",
+      "partTitle": "부록 안내",
+      "id": "page-40",
+      "page": 40,
+      "title": "부록 안내 · 40쪽",
+      "source": "05_APPENDICES.md",
+      "textSha256": "cda573a1c40972ff51343d0944c6a6b1eafcbc9906a60bc3efad9529a3ef174f",
+      "glossary_links": []
+    },
+    {
+      "part": "appendix-a",
+      "partTitle": "부록 A · 헷갈리는 용어 15쌍",
+      "id": "page-41",
+      "page": 41,
+      "title": "부록 A · 헷갈리는 용어 15쌍 · 41쪽",
+      "source": "05_APPENDICES.md",
+      "textSha256": "c9f4cae560179e47925fed0b78ce2bc2455a4d8605a3de1a14a1055e95c224b8",
+      "glossary_links": [
+        "context",
+        "memory"
+      ]
+    },
+    {
+      "part": "appendix-b",
+      "partTitle": "부록 B · 분석 캔버스 워크시트",
+      "id": "page-42",
+      "page": 42,
+      "title": "부록 B · 분석 캔버스 워크시트 · 42쪽",
+      "source": "05_APPENDICES.md",
+      "textSha256": "c25f55bece86a13ee5032a57e8a1ac0f2f72986e5a9b0e309c9901cc4a82d640",
+      "glossary_links": [
+        "control-plane"
+      ]
+    },
+    {
+      "part": "appendix-b",
+      "partTitle": "부록 B · 분석 캔버스 워크시트",
+      "id": "page-43",
+      "page": 43,
+      "title": "부록 B · 분석 캔버스 워크시트 · 43쪽",
+      "source": "05_APPENDICES.md",
+      "textSha256": "9a1e52e3ebc5f5748022973a9ffb10f07eba7afdd7449161adc46a45ecccdebe",
+      "glossary_links": [
+        "control-plane"
+      ]
+    },
+    {
+      "part": "appendix-b",
+      "partTitle": "부록 B · 분석 캔버스 워크시트",
+      "id": "page-44",
+      "page": 44,
+      "title": "부록 B · 분석 캔버스 워크시트 · 44쪽",
+      "source": "05_APPENDICES.md",
+      "textSha256": "f8a771894ed0a19dac1e6a273000edf7d22ff2fe47b1921f96e28a0368ab6bbd",
+      "glossary_links": [
+        "control-plane"
+      ]
+    },
+    {
+      "part": "appendix-c",
+      "partTitle": "부록 C · 자율성 레벨 판정 시트",
+      "id": "page-45",
+      "page": 45,
+      "title": "부록 C · 자율성 레벨 판정 시트 · 45쪽",
+      "source": "05_APPENDICES.md",
+      "textSha256": "bcd998479254ce1bcf891f6eefc40ef942469e826ea9fe6b43166369941e91ff",
+      "glossary_links": [
+        "autonomy",
+        "trigger"
+      ]
+    },
+    {
+      "part": "appendix-c",
+      "partTitle": "부록 C · 자율성 레벨 판정 시트",
+      "id": "page-46",
+      "page": 46,
+      "title": "부록 C · 자율성 레벨 판정 시트 · 46쪽",
+      "source": "05_APPENDICES.md",
+      "textSha256": "f758c7d9b33a2b29c0d17d62e54265d184e4e238eb968ece3460324bebe1f1d2",
+      "glossary_links": [
+        "autonomy",
+        "trigger"
+      ]
+    },
+    {
+      "part": "appendix-d",
+      "partTitle": "부록 D · 자주 나오는 오개념",
+      "id": "page-47",
+      "page": 47,
+      "title": "부록 D · 자주 나오는 오개념 · 47쪽",
+      "source": "05_APPENDICES.md",
+      "textSha256": "9542b5d020673d0b8f9ad5d2edbf861aae876ebbaecf3ff3e0f01eb26969e03c",
+      "glossary_links": [
+        "hallucination",
+        "hitl"
+      ]
+    },
+    {
+      "part": "appendix-e",
+      "partTitle": "부록 E · 보안 기술 세부",
+      "id": "page-48",
+      "page": 48,
+      "title": "부록 E · 보안 기술 세부 · 48쪽",
+      "source": "05_APPENDICES.md",
+      "textSha256": "a750e60e90c3f4effffd9295e99178975ee4f9246a8982c000ec69178918a16f",
+      "glossary_links": [
+        "sandbox",
+        "permission"
+      ]
+    },
+    {
+      "part": "appendix-e",
+      "partTitle": "부록 E · 보안 기술 세부",
+      "id": "page-49",
+      "page": 49,
+      "title": "부록 E · 보안 기술 세부 · 49쪽",
+      "source": "05_APPENDICES.md",
+      "textSha256": "6f7cab8dc5f851d85001edce3d7fc7c655704956dbc7af695566acbb93cbb956",
+      "glossary_links": [
+        "sandbox",
+        "permission"
+      ]
+    },
+    {
+      "part": "appendix-f",
+      "partTitle": "부록 F · 모델과 시스템",
+      "id": "page-50",
+      "page": 50,
+      "title": "부록 F · 모델과 시스템 · 50쪽",
+      "source": "05_APPENDICES.md",
+      "textSha256": "0cdd2eb4f9cfcfc24571c57c66c7057aca7868dff371d2b1f80e6db3c5bd38a9",
+      "glossary_links": [
+        "training",
+        "rag"
+      ]
+    },
+    {
+      "part": "appendix-f",
+      "partTitle": "부록 F · 모델과 시스템",
+      "id": "page-51",
+      "page": 51,
+      "title": "부록 F · 모델과 시스템 · 51쪽",
+      "source": "05_APPENDICES.md",
+      "textSha256": "838f909c122d905423d3288179c236283bb5b631d781d9dc7c0cbfb2cd986974",
+      "glossary_links": [
+        "training",
+        "rag"
+      ]
+    },
+    {
+      "part": "appendix-g",
+      "partTitle": "부록 G · 빈 Product Map / 마침",
+      "id": "page-52",
+      "page": 52,
+      "title": "부록 G · 빈 Product Map / 마침 · 52쪽",
+      "source": "05_APPENDICES.md",
+      "textSha256": "f8dd8be9d33e90815b551015373cb045d41121fced3a9b79d23f119b8a66d982",
+      "glossary_links": []
+    },
+    {
+      "part": "appendix-g",
+      "partTitle": "부록 G · 빈 Product Map / 마침",
+      "id": "page-53",
+      "page": 53,
+      "title": "부록 G · 빈 Product Map / 마침 · 53쪽",
+      "source": "05_APPENDICES.md",
+      "textSha256": "885de2049700cbe22c196c41e38a05f393ce9449b891652e61906069c0d2da60",
+      "glossary_links": []
+    }
+  ],
+  "coverage": 53,
+  "appendixG": "intentionally-unfilled",
+  "formatNotes": [
+    {
+      "pages": [
+        3,
+        5,
+        16,
+        17,
+        22,
+        28,
+        33,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        50,
+        51,
+        52
+      ],
+      "status": "전사본의 표·도식 줄 순서를 유지합니다. 원문 관계를 추측해 재배열하지 않았습니다."
+    },
+    {
+      "pages": [
+        33,
+        43
+      ],
+      "status": "색상/열 관계가 전사본에서 불명확합니다. PDF 대조 편집 확인이 필요합니다."
+    }
+  ]
+}

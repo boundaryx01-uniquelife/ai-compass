@@ -1,0 +1,274 @@
+{
+  "testedAt": "2026-09-09T12:53:20.456Z",
+  "acceptance": [
+    {
+      "id": 1,
+      "title": "Hub loads from /pwa/hub/",
+      "status": "PASS"
+    },
+    {
+      "id": 2,
+      "title": "Intro is front door",
+      "status": "PASS"
+    },
+    {
+      "id": 3,
+      "title": "Intro fits laptop viewport",
+      "status": "PASS"
+    },
+    {
+      "id": 4,
+      "title": "Intro communicates four capability axes and CONTROL",
+      "status": "PASS"
+    },
+    {
+      "id": 5,
+      "title": "CONTROL is cross-cutting",
+      "status": "PASS"
+    },
+    {
+      "id": 6,
+      "title": "Global navigation reaches all four destinations",
+      "status": "PASS"
+    },
+    {
+      "id": 7,
+      "title": "Six separate EXPLORE routes",
+      "status": "PASS"
+    },
+    {
+      "id": 8,
+      "title": "EXPLORE avoids long article",
+      "status": "PASS"
+    },
+    {
+      "id": 9,
+      "title": "CORE 30 search works in Hub",
+      "status": "PASS"
+    },
+    {
+      "id": 10,
+      "title": "Korean/English/acronym/alias search",
+      "status": "PASS"
+    },
+    {
+      "id": 11,
+      "title": "15 comparison pairs reachable",
+      "status": "PASS"
+    },
+    {
+      "id": 12,
+      "title": "EXTENDED concepts do not invent definitions",
+      "status": "PASS"
+    },
+    {
+      "id": 13,
+      "title": "Five-question session completes",
+      "status": "PASS"
+    },
+    {
+      "id": 14,
+      "title": "Learning result is concept review, not aggregate score",
+      "status": "PASS"
+    },
+    {
+      "id": 15,
+      "title": "Case Lab usable from incident to reflection",
+      "status": "PASS"
+    },
+    {
+      "id": 16,
+      "title": "All 53 READ pages match canonical manuscript",
+      "status": "PASS"
+    },
+    {
+      "id": 17,
+      "title": "READ table of contents",
+      "status": "PASS"
+    },
+    {
+      "id": 18,
+      "title": "READ previous/next works",
+      "status": "PASS"
+    },
+    {
+      "id": 19,
+      "title": "READ displays current section",
+      "status": "PASS"
+    },
+    {
+      "id": 20,
+      "title": "READ glossary jumps resolve",
+      "status": "PASS"
+    },
+    {
+      "id": 21,
+      "title": "First teacher deck is usable and sourced",
+      "status": "PASS"
+    },
+    {
+      "id": 22,
+      "title": "All slides have student view",
+      "status": "PASS"
+    },
+    {
+      "id": 23,
+      "title": "Quick Note present",
+      "status": "PASS"
+    },
+    {
+      "id": 24,
+      "title": "Full Teaching Script present",
+      "status": "PASS"
+    },
+    {
+      "id": 25,
+      "title": "Audience excludes notes and scripts from DOM",
+      "status": "PASS"
+    },
+    {
+      "id": 26,
+      "title": "Teacher Mode exposes teaching support",
+      "status": "PASS"
+    },
+    {
+      "id": 27,
+      "title": "Teacher question visible",
+      "status": "PASS"
+    },
+    {
+      "id": 28,
+      "title": "Misconception visible",
+      "status": "PASS"
+    },
+    {
+      "id": 29,
+      "title": "Slide buttons and keyboard navigate",
+      "status": "PASS"
+    },
+    {
+      "id": 30,
+      "title": "Desktop slides avoid document scrolling",
+      "status": "PASS"
+    },
+    {
+      "id": 31,
+      "title": "Mobile has no horizontal overflow and usable TOC",
+      "status": "PASS"
+    },
+    {
+      "id": 32,
+      "title": "No external runtime/API/login/database",
+      "status": "PASS"
+    },
+    {
+      "id": 33,
+      "title": "Glossary definitions are not duplicated",
+      "status": "PASS"
+    },
+    {
+      "id": 34,
+      "title": "Existing Glossary intact and functional",
+      "status": "PASS"
+    },
+    {
+      "id": 35,
+      "title": "pwa/v2 is unmodified",
+      "status": "PASS"
+    },
+    {
+      "id": 36,
+      "title": "Frozen conceptual sources and Appendix G preserved",
+      "status": "PASS"
+    },
+    {
+      "id": 37,
+      "title": "Other PWA caches are retained",
+      "status": "PASS"
+    },
+    {
+      "id": 38,
+      "title": "Offline reload: Hub, manuscript, teaching, glossary",
+      "status": "PASS"
+    },
+    {
+      "id": 39,
+      "title": "Visible keyboard focus",
+      "status": "PASS"
+    },
+    {
+      "id": 40,
+      "title": "No KoPub/webfont binary added",
+      "status": "PASS"
+    }
+  ],
+  "smoke": [
+    {
+      "scenario": "A",
+      "status": "PASS",
+      "acceptance": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "scenario": "B",
+      "status": "PASS",
+      "acceptance": [
+        7,
+        36
+      ]
+    },
+    {
+      "scenario": "C",
+      "status": "PASS",
+      "acceptance": [
+        9,
+        10,
+        33
+      ]
+    },
+    {
+      "scenario": "D",
+      "status": "PASS",
+      "acceptance": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "scenario": "E",
+      "status": "PASS",
+      "acceptance": [
+        22,
+        23,
+        24,
+        25,
+        26
+      ]
+    },
+    {
+      "scenario": "F",
+      "status": "PASS",
+      "acceptance": [
+        31
+      ]
+    }
+  ],
+  "extras": [
+    {
+      "test": "Chromium installability",
+      "status": "PASS"
+    },
+    {
+      "test": "Browser JavaScript errors",
+      "status": "PASS",
+      "errors": []
+    }
+  ]
+}
