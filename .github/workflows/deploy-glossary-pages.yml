@@ -1,0 +1,64 @@
+name: Deploy AI Compass Glossary to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'pwa/glossary/**'
+      - 'docs/education/glossary/AI_COMPASS_GLOSSARY_DATA_v1.0.json'
+      - '.github/workflows/deploy-glossary-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Prepare static site
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _site/pwa _site/docs/education/glossary
+          cp -R pwa/glossary _site/pwa/
+          cp docs/education/glossary/AI_COMPASS_GLOSSARY_DATA_v1.0.json _site/docs/education/glossary/
+          cat > _site/index.html <<'EOF'
+          <!doctype html>
+          <html lang="ko">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>AI Compass Glossary</title>
+            <meta http-equiv="refresh" content="0; url=./pwa/glossary/#/find">
+            <link rel="canonical" href="./pwa/glossary/#/find">
+          </head>
+          <body>
+            <p><a href="./pwa/glossary/#/find">AI Compass Glossary 열기</a></p>
+          </body>
+          </html>
+          EOF
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
