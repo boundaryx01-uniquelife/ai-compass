@@ -1,5 +1,5 @@
 {
-  "testedAt": "2026-09-10T12:46:26.738Z",
+  "testedAt": "2026-09-10T13:16:23.186Z",
   "environment": "Windows / Edge headless / Playwright / 1366x768 and 375,320x812",
   "results": [
     {
@@ -109,7 +109,7 @@
     },
     {
       "id": 22,
-      "name": "42장 학생 콘텐츠 존재",
+      "name": "42장 학생 콘텐츠·시각 계층 존재",
       "status": "PASS"
     },
     {
@@ -139,17 +139,17 @@
     },
     {
       "id": 28,
-      "name": "오개념과 바로잡기",
+      "name": "오개념·표·경고 강조",
       "status": "PASS"
     },
     {
       "id": 29,
-      "name": "슬라이드 버튼·키보드 이동",
+      "name": "슬라이드 버튼·키보드·기존 링크 이동",
       "status": "PASS"
     },
     {
       "id": 30,
-      "name": "42장 데스크톱 발표 화면",
+      "name": "42장 데스크톱 계층·가독성·overflow",
       "status": "PASS"
     },
     {

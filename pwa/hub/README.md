@@ -61,7 +61,16 @@ READ 예: `#/read/part4/p22`. `#/read`는 마지막 읽은 위치로 돌아갑�
 
 READ 원문은 `docs/manuscript/00_...`부터 `05_...`까지의 전사본에서 직접 변환했습니다. 안내용 파일 머리말과 PDF 매핑 주석만 본문에서 제외하고, 원문 문구는 요약하거나 수정하지 않았습니다. CRLF/LF 정규화와 HTML 제목·문단 변환만 적용합니다. 전체 53쪽의 실제 브라우저 본문과 전사본을 공백·제목 마크업 정규화 후 대조합니다.
 
-Teacher Deck은 제공된 PDF의 42장 원본 화면을 학생용 기본 화면으로 사용하고, PPTX 텍스트 상자도 구조화 데이터로 보존합니다. `import-lecture.py`는 PDF를 WebP로 다시 만들 뿐 `teacher-deck.json`을 덮어쓰지 않습니다. 원래 노트는 짧거나 없는 장이 많습니다. `full_script`는 **실제 원고의 대응 구절과 슬라이드 문장, 수업 질문으로 구성한 웹 강의 설명문**이며, 원래 PPTX에 완성된 대본이 있었다는 뜻은 아닙니다. 원래 발표 노트는 `source.original_notes`, 각 설명의 출처는 `source.manuscript`와 `source.page`에 기록합니다. 질문은 해당 내용에 맞춘 교육 활동 문구입니다. 소요 시간은 수업용 추정값입니다.
+Teacher Deck은 PPTX의 42장 텍스트를 `TITLE → KEY MESSAGE → CONTENT` 구조로 재배치합니다. 문구와 순서는 원본 데이터에 보존하고, 표·비교·단계·경고처럼 의미가 있는 묶음만 공통 레이아웃 유형으로 표시합니다. 제공된 PDF 42장 화면은 Teacher Mode의 원본 대조 패널에서 확인할 수 있습니다. `import-lecture.py`는 PDF를 WebP로 다시 만들 뿐 `teacher-deck.json`을 덮어쓰지 않습니다. 원래 노트는 짧거나 없는 장이 많습니다. `full_script`는 **실제 원고의 대응 구절과 슬라이드 문장, 수업 질문으로 구성한 웹 강의 설명문**이며, 원래 PPTX에 완성된 대본이 있었다는 뜻은 아닙니다. 원래 발표 노트는 `source.original_notes`, 각 설명의 출처는 `source.manuscript`와 `source.page`에 기록합니다. 질문은 해당 내용에 맞춘 교육 활동 문구입니다. 소요 시간은 수업용 추정값입니다.
+
+## TEACH Visual Hierarchy v2
+
+- 모든 장은 `slide-title`, `key-message`, `slide-content`의 세 영역을 같은 순서로 사용합니다.
+- 1366×768 Audience Mode에서 번호 14px, 제목 38px, 핵심 메시지 28px, 콘텐츠 20px 이상을 자동 검사합니다.
+- 한국어는 `word-break: keep-all`과 의미 줄 단위 `meaning-line`을 사용하고, 핵심 메시지는 데스크톱에서 최대 두 줄인지 검사합니다.
+- `title`, `questions`, `comparison`, `flow`, `permission`, `levels`, `triggers`, `control`, `traffic`, `case`, `case-table`, `formula`, `cards` 레이아웃을 공통 renderer가 처리합니다.
+- 표 header와 본문 배경을 분리하고, Slide 21 과도 권한 행과 Reversibility의 단계는 기존 색상 체계 안에서 강조합니다.
+- 모바일은 카드와 표를 세로로 재배치하며 375px와 320px에서 42장 전체의 가로 overflow를 검사합니다.
 
 Glossary 정의는 Hub 코드나 데이터로 복사하지 않습니다. `../../docs/education/glossary/AI_COMPASS_GLOSSARY_DATA_v1.0.json`에서 읽으며, 교사용 오개념 역시 term ID로 원본을 참조합니다.
 
@@ -91,7 +100,7 @@ Hub 캐시는 `ai-compass-hub-v2-` 전용 이름만 정리합니다. Glossary �
 
 ## 검증
 
-`ACCEPTANCE.md`에 handoff 40개 항목과 smoke A–F를 개별 기록했습니다. `acceptance-results.json`은 실제 브라우저 실행 결과이며 `qa/`에 화면을 남겼습니다.
+`ACCEPTANCE.md`에 handoff 40개 항목과 smoke A–F를 개별 기록했습니다. `acceptance-results.json`은 실제 브라우저 실행 결과입니다. `qa/teach-title.png`부터 주요 유형 10장과 `qa/teach-contact-sheet.png`에 빠른 육안 검토 화면을 남겼습니다.
 
 Node.js, Playwright, Edge가 있는 개발 환경에서 정적 서버를 켠 뒤 실행합니다.
 
@@ -114,7 +123,7 @@ node pwa/hub/acceptance.cjs
 - Case B/C의 **단계형 인터랙션**은 미이관. 전체 사건 원고는 READ에 있습니다.
 - Appendix G의 최신 제품 정보는 의도적으로 채우지 않았습니다. 기존 빈 양식과 작성 안내만 보존합니다.
 - 원문 표의 불명확한 셀 관계를 새 표로 재구성하지 않았습니다.
-- 기존 PPTX의 학생용 화면은 PDF 렌더링으로 42장 전체를 보존했습니다. PPTX 내부 도형을 편집 가능한 HTML 요소로 재작성하지는 않았습니다.
+- 기존 PDF 화면은 42장 전체를 대조 자료로 보존했습니다. 학생 발표 화면은 PPTX 문구를 반응형 HTML 계층으로 재배치하며, PPTX 내부 도형 자체를 편집 가능한 HTML 요소로 복제하지는 않았습니다.
 - 새 PPTX 생성, 복수 강의 덱, 인쇄물, 외부 제품 정보 갱신은 이번 범위 밖입니다.
 - 본문 Part 0–7 및 Appendix A–G의 전사 텍스트 자체는 **53쪽 모두 이관**했습니다.
 

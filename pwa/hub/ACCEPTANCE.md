@@ -1,6 +1,6 @@
 # AI Compass Hub v2 Acceptance
 
-검증 시각: 2026-09-10T12:46:26.740Z
+검증 시각: 2026-09-10T13:16:23.187Z
 
 Windows / Microsoft Edge(headless) / Playwright. 데스크톱 1366×768, 모바일 375×812 및 320×812.
 
@@ -65,7 +65,9 @@ Windows / Microsoft Edge(headless) / Playwright. 데스크톱 1366×768, 모바�
 ## 검증 범위
 
 - READ: 전사본 전체 53쪽과 생성 JSON을 CRLF/LF 정규화 후 대조하고, 각 쪽의 실제 렌더링 문구를 공백·제목 마크업 정규화 후 대조했습니다.
-- TEACH: 실제 PPTX 42장의 데이터와 지원 필드를 확인하고 Audience Mode의 모든 장에서 데스크톱 내부 넘침을 검사했습니다. 교사 설명 패널은 의도적으로 내부 스크롤됩니다.
+- TEACH: 42장 모두 TITLE / KEY MESSAGE / CONTENT 순서를 확인했습니다. 1366×768 Audience Mode에서 번호 14px, 제목 38px, 핵심 28px, 콘텐츠 20px 이상, 핵심 최대 2줄, 슬라이드 세로 overflow 없음도 검사했습니다.
+- TEACH mobile: 42장 전체를 375×812와 320×812에서 열어 가로 overflow와 핵심 메시지 위치를 확인했습니다.
+- 표/강조: Slide 21 permission table과 warning row, Slide 38 comparison panel class를 검사했습니다. 대표 유형 10장의 QA screenshot을 생성했습니다.
 - Offline: 새로운 브라우저 프로필에서 Intro만 방문한 뒤 네트워크를 끊고 새로고침하여 READ·TEACH·EXPLORE·Case A·Glossary·Compare·Quiz를 확인했습니다.
 - 기존 Glossary와 pwa/v2, 동결 원고/정의 파일의 변경 없음도 검사했습니다.
 - 원본 PDF/PPTX 다운로드의 오프라인 사용, 실기기 설치, 전체 WCAG/스크린리더 감사, 향후 캐시 버전 변경의 운영 누락은 검증 범위 밖입니다.
