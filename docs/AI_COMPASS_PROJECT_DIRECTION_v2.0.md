@@ -1,74 +1,87 @@
 # AI Compass Project Direction v2.0
 
 Status: **ACTIVE DIRECTION**
-Date: 2026-09-08
+Updated: 2026-09-10
 
 ## Why this revision exists
 
 The first PWA direction treated the Analysis Canvas itself as the main product. That produced a technically coherent analysis form, but not an obvious learning experience. A learner opening the app could reasonably ask: "What am I supposed to do here, and what will I learn?"
 
-That is a product-goal mismatch, not a manuscript problem.
+That was a product-goal mismatch, not a manuscript problem.
 
 The manuscript remains the conceptual source of truth. The digital product must serve learning first, not merely digitize a worksheet.
 
+This direction has now moved beyond proposal stage. **AI Compass Hub v2 has been implemented, deployed through GitHub Pages, and passed its automated acceptance suite.** The current question is no longer whether to redesign the learner PWA, but how to finish, validate, and package the implemented system for real educational use.
+
 ## Four project outputs
 
-AI Compass now has four distinct outputs with different jobs.
+AI Compass has four distinct outputs with different jobs.
 
 ### 1. Publication / Distribution Manuscript
 
 Purpose: explain the framework in a coherent, readable form.
 
-Primary outputs:
-- final reading PDF
-- editable source manuscript
-- future print/distribution edition
-- optional accessible web/e-book edition
+Current state:
+- Core Manuscript v1.0 content frozen
+- 53-page source represented in Hub READ
+- final PDF retained as distribution source
 
-The manuscript is not the PWA UI specification.
+Remaining publication work may include licensing, front matter, accessibility, print/digital packaging, and release metadata. These production decisions must not silently reopen the frozen conceptual manuscript.
 
 ### 2. Educational Appendices
 
 Purpose: turn the manuscript into teachable and learnable material.
 
-Primary outputs:
-- learner workbook
-- instructor guide
-- case cards
-- concept and misconception cards
-- autonomy classification activities
-- reversibility activities
-- worksheets and answer/discussion guides
-- quiz/question bank
+The highest-priority appendix is the **official Glossary**.
 
-### 3. PWA: AI Compass Learning Lab
+Current state:
+- Glossary architecture defined
+- writing style defined
+- CORE 30 v1.0 completed
+- canonical JSON data generated
+- Glossary PWA and Hub LEARN integration available
+- 15 compare pairs and a 5-question learning session available
 
-Purpose: help a learner understand AI systems through interaction, comparison, prediction, and feedback.
+Additional educational materials include case cards, autonomy and reversibility activities, worksheets, instructor supports, and future learner/facilitator derivatives.
+
+### 3. PWA: AI Compass Hub / Learning Lab
+
+Purpose: help a learner understand AI systems through interaction, comparison, prediction, reading, teaching, and feedback.
 
 The PWA is **not** primarily a compliance form or system-audit form.
 
-The learner should leave the PWA able to:
-1. distinguish Model / Context / Action / Autonomy / Control
-2. explain why the same model can produce very different system risks
-3. identify trust boundaries and tool permissions in a scenario
-4. distinguish automation from autonomy
-5. classify basic autonomy levels without confusing Trigger with Autonomy
-6. reason about reversibility and appropriate controls
-7. apply the six Compass questions to a new system
+The implemented Hub v2 now organizes the learning experience into five top-level areas:
 
-The Analysis Canvas may remain as an advanced final activity or teacher/professional tool, but it is no longer the front door of the PWA.
+> **INTRO · EXPLORE · LEARN · READ · TEACH**
+
+Current Hub capabilities include:
+- six EXPLORE concept routes
+- CORE 30 glossary search
+- 15 concept comparison pairs
+- 5-question learning sessions
+- Case Lab entry and complete Case A interaction
+- 53-page manuscript READ experience
+- 42-slide TEACH experience with Audience / Teacher Mode
+- offline support for core screens
+- responsive mobile behavior
+
+The Analysis Canvas remains valid as an advanced final activity or teacher/professional tool, but it is not the front door of the learner PWA.
 
 ### 4. Lecture Slides
 
 Purpose: allow the manuscript to be taught as a lecture, workshop, or teacher-training session.
 
-Primary deck:
-- 60–90 minute instructor deck
+Current state:
+- primary 42-slide deck exists
+- slide content is represented in Hub TEACH
+- Quick Note and Full Teaching Script are available in the web teaching experience
 
-Future derivatives:
+Future derivatives may include:
 - 30-minute condensed deck
 - high-school learning deck
 - workshop/facilitation deck
+
+These are optional extensions, not prerequisites for stabilizing Hub v2.
 
 ## Product relationship
 
@@ -83,102 +96,94 @@ Future derivatives:
         |             |             |
         +-------------+-------------+
                       |
-              PWA Learning Lab
-           interactive application
+             AI Compass Hub v2
+          interactive learning layer
 ```
 
-The PWA and slides derive from the manuscript. They do not reproduce the manuscript page by page.
+The PWA and slides derive from the manuscript. They do not reproduce the manuscript page by page, even though READ preserves the full source text for reference.
 
-## PWA redesign principle
-
-Old question:
-> How do we put the Analysis Canvas into an app?
-
-New question:
-> What can a learner understand through interaction that is harder to learn from reading alone?
-
-This becomes the criterion for every PWA feature.
-
-## Proposed PWA learning modules
-
-### Module 0 — Start Here: What is an AI system?
-A short visual explainer distinguishing model, product/service, harness, tools, and agent.
-
-### Module 1 — Build an AI System
-Learner toggles Context, Tools, Autonomy, and Control around the same model and sees how the resulting system changes.
-
-Core insight: **same model, different system**.
-
-### Module 2 — Context Lab
-Interactive scenarios for trustworthy vs untrusted inputs, hidden instructions, memory, RAG, and trust boundaries.
-
-Core insight: data can influence behavior, and source/provenance matters.
-
-### Module 3 — Tool & Permission Lab
-Learner gives an AI read/write/send/delete permissions and predicts consequences.
-
-Core insight: model ability and system permission are different.
-
-### Module 4 — Autonomy Lab
-Scenario cards ask the learner to classify L0–L4 and Trigger separately, with immediate explanation.
-
-Must include the fixed 09:00 scheduled-message counterexample.
-
-### Module 5 — Reversibility Lab
-Learner sorts actions into GREEN / YELLOW / RED based on concrete contexts, not action names alone.
-
-Core insight: "Can I undo this alone?"
-
-### Module 6 — Case Lab
-Three anchor cases become branching investigations:
-- hidden instruction in student assignment
-- hallucinated student record
-- shared-drive agent failure
-
-Learner predicts where the failure starts, what amplifies it, and what control changes the outcome.
-
-### Module 7 — Compass Challenge
-A new unfamiliar AI system is shown. Learner applies the six Compass questions.
-
-This is where the Analysis Canvas belongs: **as a capstone**, not the homepage.
-
-## PWA home-screen promise
-
-The first screen must answer three questions immediately:
-
-1. What is this?
-   - "AI 시스템을 직접 조립하고 사건을 풀면서 구조와 위험을 배우는 학습 실험실"
-2. What will I do?
-   - "조립하기 · 비교하기 · 사건 풀기 · 판정하기"
-3. What will I gain?
-   - "처음 보는 AI도 여섯 질문으로 구조를 읽을 수 있게 됩니다."
-
-No learner should have to infer the product's purpose from a form.
-
-## Frozen vs editable
+## Frozen framework
 
 Frozen:
 - core manuscript concepts and terminology
 - six Compass questions
-- Capability Stack / Control Plane distinction
+- Purpose & Stakes
+- Capability Stack: Model → Context → Action / Tools → Autonomy
+- Control Plane as a cross-cutting control structure, not a fifth capability layer
+- CAPABILITY → RISK → CONTROL grammar
 - autonomy classification principles
 - Trigger separation
 - reversibility principles
 
 Editable:
 - learning sequence
-- PWA navigation
-- activities
-- game mechanics
-- visual style
-- slide pedagogy
-- appendices
+- Hub navigation and visual treatment
+- activities and game mechanics
+- teaching scripts and facilitation language
+- appendices beyond frozen definitions
+- release packaging and accessibility improvements
+
+## Implemented learning architecture
+
+The earlier proposed Learning Lab modules have been consolidated into Hub v2.
+
+### INTRO
+Communicates the overall AI Compass structure and acts as the front door.
+
+### EXPLORE
+Independent routes for System, Model, Context, Action, Autonomy, and Control.
+
+### LEARN
+Glossary, comparisons, quiz, and Case Lab.
+
+### READ
+Full 53-page manuscript reading experience with navigation and glossary links where mapped.
+
+### TEACH
+42-slide teaching experience with student-facing and teacher-support modes.
+
+This implemented architecture supersedes the earlier requirement to finish a new learner-facing wireframe before coding.
+
+## Current acceptance baseline
+
+`pwa/hub/ACCEPTANCE.md` records the current automated baseline.
+
+- **40 PASS / 0 FAIL**
+- desktop and mobile responsive checks
+- keyboard focus checks
+- glossary, compare, quiz, READ, TEACH, and Case A checks
+- core offline reload checks
+- frozen definitions and legacy PWA preservation checks
+
+This automated acceptance is not equivalent to complete field validation.
+
+## Known gaps and deliberately unmigrated scope
+
+The next stage should focus on explicit gaps rather than inventing a new product direction.
+
+1. Case B/C do not yet have the full staged interaction used by Case A.
+2. Android/iOS real-device installation and touch behavior remain unverified.
+3. Full WCAG and screen-reader auditing remain unverified.
+4. Teacher scripts need real lecture rehearsal for timing and spoken tone.
+5. Some manuscript tables/diagrams have ambiguous extraction or reading order and should be checked against the source PDF rather than reconstructed by guesswork.
+6. Appendix G current-product information remains intentionally unfilled and requires a separate update policy if activated.
+7. Publication license and release packaging are not yet decided.
+
+## Current stage
+
+**IMPLEMENTED → ACCEPTED IN AUTOMATED QA → FIELD VALIDATION / RELEASE PREPARATION**
+
+The immediate objective is to move from a technically coherent Hub to a dependable teaching and distribution package.
 
 ## Immediate next work
 
-1. create educational appendix plan
-2. create lecture deck specification and first deck
-3. redesign PWA as Learning Lab before further coding
-4. archive the Analysis Canvas PWA direction as a professional-tool branch, not the main learner experience
+1. keep repository status documents synchronized with the implemented Hub
+2. review and rank known content/interaction gaps
+3. run real-device and real-teaching validation
+4. fix only issues supported by those checks
+5. establish a v1.0 release checklist for Hub + publication assets
+6. decide license and public-release metadata before formal distribution
 
-The previous `AI_COMPASS_PWA_V2_CODEX_HANDOFF_v1.0.md` should be treated as **superseded for the learner-facing PWA**. Its analysis logic remains valid as a future professional/advanced tool.
+Codex is now appropriate for **targeted fixes, QA automation, accessibility improvements, staged Case B/C implementation, and release preparation**. It should not be asked to reinterpret or redesign frozen conceptual rules without an explicit new decision.
+
+The previous `AI_COMPASS_PWA_V2_CODEX_HANDOFF_v1.0.md` remains superseded for the learner-facing PWA. Its analysis logic remains valid as a future professional/advanced tool.
