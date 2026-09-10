@@ -1,6 +1,6 @@
 # AI Compass Hub v2 Acceptance
 
-검증 시각: 2026-09-10T04:24:32.246Z
+검증 시각: 2026-09-10T04:34:16.850Z
 
 Windows / Microsoft Edge(headless) / Playwright. 데스크톱 1366×768, 모바일 375×812 및 320×812.
 

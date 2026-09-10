@@ -3,6 +3,7 @@ export function routeParts() {
   catch {return ['missing'];}
 }
 export function selectNav(section) {
+  document.body.dataset.section = section;
   document.querySelectorAll('.header nav a').forEach(link => {
     if (link.hash.split('/')[1] === section) link.setAttribute('aria-current','page');
     else link.removeAttribute('aria-current');

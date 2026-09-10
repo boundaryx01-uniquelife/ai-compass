@@ -1,5 +1,5 @@
 {
-  "testedAt": "2026-09-10T04:24:32.245Z",
+  "testedAt": "2026-09-10T04:34:16.849Z",
   "environment": "Windows / Edge headless / Playwright / 1366x768 and 375,320x812",
   "results": [
     {
@@ -29,7 +29,7 @@
     },
     {
       "id": 6,
-      "name": "최상위 4개 메뉴 접근",
+      "name": "최상위 5개 페이지 접근·구분",
       "status": "PASS"
     },
     {
