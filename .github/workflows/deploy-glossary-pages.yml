@@ -1,11 +1,15 @@
-name: Deploy AI Compass Glossary to GitHub Pages
+name: Deploy AI Compass Hub to GitHub Pages
 
 on:
   push:
     branches: [main]
     paths:
+      - 'pwa/hub/**'
       - 'pwa/glossary/**'
       - 'docs/education/glossary/AI_COMPASS_GLOSSARY_DATA_v1.0.json'
+      - 'docs/publication/AI_COMPASS_v1.0_FINAL.pdf'
+      - 'docs/slides/AI_Compass_Lecture_Deck_v0.1.pdf'
+      - 'docs/slides/AI_Compass_Lecture_Deck_v0.1.pptx'
       - '.github/workflows/deploy-glossary-pages.yml'
   workflow_dispatch:
 
@@ -32,21 +36,26 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p _site/pwa _site/docs/education/glossary
+          mkdir -p _site/pwa _site/docs/education/glossary _site/docs/publication _site/docs/slides
+          cp -R pwa/hub _site/pwa/
           cp -R pwa/glossary _site/pwa/
           cp docs/education/glossary/AI_COMPASS_GLOSSARY_DATA_v1.0.json _site/docs/education/glossary/
+          cp docs/publication/AI_COMPASS_v1.0_FINAL.pdf _site/docs/publication/
+          cp docs/slides/AI_Compass_Lecture_Deck_v0.1.pdf _site/docs/slides/
+          cp docs/slides/AI_Compass_Lecture_Deck_v0.1.pptx _site/docs/slides/
+          touch _site/.nojekyll
           cat > _site/index.html <<'EOF'
           <!doctype html>
           <html lang="ko">
           <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>AI Compass Glossary</title>
-            <meta http-equiv="refresh" content="0; url=./pwa/glossary/#/find">
-            <link rel="canonical" href="./pwa/glossary/#/find">
+            <title>AI Compass Hub</title>
+            <meta http-equiv="refresh" content="0; url=./pwa/hub/#/intro">
+            <link rel="canonical" href="./pwa/hub/#/intro">
           </head>
           <body>
-            <p><a href="./pwa/glossary/#/find">AI Compass Glossary 열기</a></p>
+            <p><a href="./pwa/hub/#/intro">AI Compass Hub 열기</a></p>
           </body>
           </html>
           EOF

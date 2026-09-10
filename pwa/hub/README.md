@@ -1,122 +1,132 @@
 # AI Compass Hub v2
 
-INTRO → EXPLORE → LEARN → READ → TEACH를 연결하는 vanilla HTML/CSS/JavaScript PWA입니다. 구현은 이 폴더에 한정합니다. 기존 Glossary와 Analysis Canvas는 수정하지 않습니다.
+INTRO · EXPLORE · LEARN · READ · TEACH를 연결하는 정적 학습 허브입니다. 승인된 Hub v2 Handoff, Manuscript Source Addendum, UX Spec을 기준으로 구현했습니다.
+
+## 브랜치와 병합
+
+- 작업 브랜치: `feat/ai-compass-hub-v2`
+- 구현 전 `origin/main`을 fetch하고 병합했습니다. 충돌 없음.
+- 병합 커밋: `821e64b`
+- 반영한 main: `dbe5a67`
+- main의 최종 원고 PDF, 강의 PDF/PPTX 3개 파일이 포함됩니다.
+- 로컬에 있던 동일한 미추적 바이너리는 해시 일치를 확인하고 임시 디렉터리에 보존한 뒤 Git 추적 파일로 병합했습니다.
 
 ## 실행
 
-저장소 루트에서 정적 파일을 제공합니다.
+저장소 루트에서 Python 3으로 실행합니다. 앱에 빌드·패키지 설치·외부 API는 필요 없습니다.
 
 ```powershell
 cd C:\dev\ai-compass
 python -m http.server 8877 --bind 127.0.0.1
 ```
 
-[로컬 Hub](http://127.0.0.1:8877/pwa/hub/) · [기존 Glossary](http://127.0.0.1:8877/pwa/glossary/)
+URL: <http://127.0.0.1:8877/pwa/hub/>
 
-정적 파일 제공 이외의 백엔드, API, 로그인, DB, 외부 폰트, CDN은 없습니다. localhost 또는 HTTPS가 필요합니다. `file://` 직접 실행은 지원하지 않습니다.
+이 사무실 PC의 Python 절대 경로:
 
-## Routes
+```powershell
+& 'C:\Users\user\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m http.server 8877 --bind 127.0.0.1
+```
 
-| 경로 | 기능 |
-| --- | --- |
-| `#/intro` | 한 화면 중심 진입 |
-| `#/explore/system` | 용도와 시스템 구조 |
-| `#/explore/model`, `context`, `action`, `autonomy`, `control` | 여섯 주제 중 해당 화면 |
-| `#/learn/glossary` | 기존 Glossary 검색 |
-| `#/learn/glossary/:term` | 기존 CORE 상세 |
-| `#/learn/compare`, `#/learn/compare/:pair` | 기존 15개 비교 |
-| `#/learn/quiz` | 기존 무작위 5문제 |
-| `#/learn/case/hidden-instruction` | 숨은 지시 사례 |
-| `#/learn/case/hallucinated-record` | 환각 기록 사례 |
-| `#/learn/case/drive-agent` | 공유 드라이브 사례 |
-| `#/read/:part/page-:n` | Part/페이지 section 탐색, 총 53개 |
-| `#/read` | 마지막 읽기 위치 또는 첫 페이지 |
-| `#/teach` | 원본 42장 강의 |
-| `#/teach/lecture-v01/slide-01` | 지정 슬라이드 |
+`file://`로 열지 마세요. 원본 용어 JSON과 독립 Glossary를 읽으므로 저장소 루트를 제공해야 합니다. `pwa/hub/` 폴더만 배포하는 구성은 지원하지 않습니다. 원격 배포에는 HTTPS가 필요합니다.
 
-READ part 값: `front`, `part-0`~`part-7`, `appendices`, `appendix-a`~`appendix-g`.
-예: `#/read/part-4/page-23`, `#/read/appendix-g/page-52`.
-TEACH slide 값은 `data/teacher-deck.json`의 안정적인 `id`입니다.
+GitHub Pages 워크플로는 Hub와 기존 Glossary, 공용 용어 데이터, 원본 PDF/PPTX를 하나의 정적 사이트로 묶습니다. 저장소 Pages 루트는 `pwa/hub/#/intro`로 이동하며 독립 Glossary 주소도 계속 유지됩니다. 기능 브랜치에서는 Actions의 `workflow_dispatch`로 배포 화면을 갱신하고, `main` 반영 후에는 관련 파일 변경 시 자동 배포됩니다.
 
-## 원고 보존
+## 화면과 라우트
 
-- READ는 **docs/manuscript의 여섯 Markdown 파일만** fetch하여 읽습니다.
-- 53개 PDF 페이지 표시를 Part/Section 경계로 사용합니다. PDF에서 다음 페이지로 이어지는 문장은 다음 section에 그대로 이어집니다.
-- 파일 설명용 첫 제목/전사 메타데이터와 PDF page 주석은 본문에서 제외합니다. 각 페이지 안의 본문은 그대로 렌더링합니다.
-- HTML escaping, Markdown 제목의 semantic heading 표시, 문단별 분리만 수행합니다. 임의 요약·교정·문장 재작성·누락 보충은 하지 않습니다.
-- `ebook.json`은 경로·Part·페이지·관련 용어·SHA256 매핑입니다. 별도 원고 사본이 아닙니다.
-- 앱 시작 때 정규화된 페이지 본문의 SHA256을 확인합니다. 소스/매핑이 다르면 읽기를 중단하고 오류를 표시합니다.
-- Appendix G는 원문에 있는 빈 양식 그대로입니다.
-- 표와 도식은 전사본의 줄 순서를 유지합니다. 관계가 불명확한 부분은 재구성하지 않았습니다. 특히 33쪽 가역성 행, 43쪽 색상 표시는 PDF 대조가 필요합니다.
-- 책갈피 대신 마지막 읽기 위치를 자동 기록하며, 모바일 목차는 패널로 엽니다.
+| 영역 | 경로 | 동작 |
+|---|---|---|
+| INTRO | `#/intro` | 기본 진입 화면, Control이 네 능력 축을 감싸는 구조 |
+| EXPLORE | `#/explore/system`, `model`, `context`, `action`, `autonomy`, `control` | 독립 주제 6개, 이전/다음, 관련 개념·원고·사례 |
+| LEARN | `#/learn/glossary` | CORE 30 검색 |
+| 용어 바로가기 | `#/learn/glossary/<term-id>` | 관련 원고·슬라이드에서 특정 용어 연결 |
+| 비교 | `#/learn/compare`, `#/learn/compare/<pair-id>` | 기존 15개 비교 |
+| 학습 | `#/learn/quiz` | 기존 무작위 5문제 세션 |
+| 사례 목록 | `#/learn/case` | 세 사례의 진입점과 준비 상태 |
+| Case A | `#/learn/case/hidden-instruction` | 사건 제시 → 시작점 → 증폭 → 통제 → 구조 연결 |
+| Case B/C | `#/learn/case/student-record`, `#/learn/case/shared-drive` | 활동 준비 안내와 전체 원고 링크 |
+| READ | `#/read`, `#/read/<part>/<section>` | 53쪽 전체, 목차, 현재 위치, 이전/다음, 용어 연결 |
+| TEACH | `#/teach`, `#/teach/core/<1–42>` | 학생/교사 모드, 키보드 좌우 이동, 전체화면 |
 
-## Glossary 재사용
+READ 예: `#/read/part4/p22`. `#/read`는 마지막 읽은 위치로 돌아갑니다. 구간은 전사본의 PDF 쪽 경계에 맞췄고 Part·부록별 목차로 묶었습니다.
 
-같은 출처의 `../glossary/` 앱을 제목이 있는 iframe 내부 패널에서 재사용합니다. CORE 30 정의, 검색 정규화, 비교 매핑, 퀴즈, 즐겨찾기, localStorage가 기존 코드 그대로 동작합니다. 별도 창 링크도 제공합니다. iframe 내부 상세/비교 이동은 Hub hash에 반영합니다.
+## 데이터와 원문 보존
 
-EXPLORE 역시 canonical Glossary JSON을 읽어 표시하며 정의 사본을 만들지 않습니다. 원문 READ와 용어집 설명은 각자의 원본을 따로 유지합니다. 퀴즈는 페이지를 새로 열면 새 세션이며 완료 기록은 기존 Glossary 저장소에 남습니다.
+`data/`의 네 JSON은 `build-data.py`로 생성됩니다. 원본을 바꿀 때만 개발 환경에서 다시 생성하고 검증합니다. 앱 실행에는 Python이 필요하지 않으며 정적 파일 서버만 사용합니다.
 
-## Teacher Deck
+- `hub.json`: 6개 탐색 주제, 질문, 관련 용어 ID, 원고 및 비교 경로
+- `ebook.json`: 전사본 6개 파일 → PDF 53쪽 전체 구간, 출처·원본 SHA-256
+- `teacher-deck.json`: 실제 PPTX 42장의 텍스트, Quick Note, Full Teaching Script, 질문·관련 원고·용어·활동
+- `cases.json`: Case A의 완전한 조사 활동과 B/C의 원고 진입점
 
-제공된 AI_Compass_Lecture_Deck_v0.1 원본 **42장 전체**를 이관했습니다.
-- 학생 화면은 PDF 원본 배치를 WebP로 보존합니다. PPTX 텍스트도 데이터에 보존합니다.
-- PPTX 발표자 노트 17장만 Quick Note로 그대로 표시합니다. 나머지 25장은 미제공입니다.
-- Full Teaching Script, 별도 질문/오개념/예상 시간 필드는 원본에 없어 null로 유지합니다.
-- Audience Mode에서는 교사 패널을 DOM에서 제외합니다. Teacher Mode에서 실제 노트와 미제공 상태를 확인합니다.
-- 전체화면은 학생 화면만 표시합니다. 이전/다음, 선택기, 좌우 방향키를 지원합니다.
-- Teacher Mode의 원문 텍스트 및 크게 열기 링크로 작은 화면을 보완합니다.
-- source에 PPTX/PDF SHA256, 슬라이드 번호, XML 경로, 원본 노트를 기록합니다. 향후 Speaker Notes 작업용 full_script 필드는 보존하되 내용을 발명하지 않습니다.
-- 기존 compass-intro 주소는 대응하는 원본 슬라이드로 연결됩니다.
-- import-lecture.py가 원본에서 42장 데이터와 assets/lecture-v01 이미지를 생성합니다. 재생성에는 PyMuPDF, Pillow, lxml이 필요합니다.
+READ 원문은 `docs/manuscript/00_...`부터 `05_...`까지의 전사본에서 직접 변환했습니다. 안내용 파일 머리말과 PDF 매핑 주석만 본문에서 제외하고, 원문 문구는 요약하거나 수정하지 않았습니다. CRLF/LF 정규화와 HTML 제목·문단 변환만 적용합니다. 전체 53쪽의 실제 브라우저 본문과 전사본을 공백·제목 마크업 정규화 후 대조합니다.
 
-## Case Lab
+Teacher Deck은 제공된 PDF의 42장 원본 화면을 학생용 기본 화면으로 사용하고, PPTX 텍스트 상자도 구조화 데이터로 보존합니다. `import-lecture.py`는 PDF를 WebP로 다시 만들 뿐 `teacher-deck.json`을 덮어쓰지 않습니다. 원래 노트는 짧거나 없는 장이 많습니다. `full_script`는 **실제 원고의 대응 구절과 슬라이드 문장, 수업 질문으로 구성한 웹 강의 설명문**이며, 원래 PPTX에 완성된 대본이 있었다는 뜻은 아닙니다. 원래 발표 노트는 `source.original_notes`, 각 설명의 출처는 `source.manuscript`와 `source.page`에 기록합니다. 질문은 해당 내용에 맞춘 교육 활동 문구입니다. 소요 시간은 수업용 추정값입니다.
 
-세 가지 원본 Case Card를 사용하여 사건 제시 → 시작점 → 증폭 조건 → 통제 → 구조 연결을 구현했습니다. 자유 서술을 기기 내에 기록하고 해설을 펼쳐 비교합니다. 자동 채점이나 위험 점수는 없습니다.
-
-## 파일 / 재생성
-
-- `index.html`, `styles.css`, `app.js`: 화면과 상호작용
-- `router.js`, `storage.js`, `manuscript.js`: 경로, Hub 로컬 저장, 원고 렌더링
-- `data/hub.json`: 주제와 연결 메타데이터
-- `data/ebook.json`: 53페이지 출처 매핑
-- `data/teacher-deck.json`: 42장 원본 화면/텍스트/교사 노트와 출처
-- `data/cases.json`: 세 사례 조사 데이터
-- `build-data.py`: 원고 기반 매핑 및 교육 데이터 생성기
-- `manifest.webmanifest`, `service-worker.js`, SVG/PNG 아이콘: 설치·오프라인
-- `tests/`: 40개 acceptance, 결과 JSON, 보호 대상 해시, 화면 캡처
+Glossary 정의는 Hub 코드나 데이터로 복사하지 않습니다. `../../docs/education/glossary/AI_COMPASS_GLOSSARY_DATA_v1.0.json`에서 읽으며, 교사용 오개념 역시 term ID로 원본을 참조합니다.
 
 ```powershell
 python pwa/hub/build-data.py
 ```
 
-재생성은 원고를 수정하지 않습니다. 관련 용어/원고 페이지의 실제 연결을 확인한 뒤 실행하세요. 보호 대상 baseline은 기존 파일이 있으면 갱신하지 않습니다.
+## 기존 앱 재사용
 
-## 테스트
+`pwa/glossary/`는 삭제·이동·편집하지 않았습니다. Hub의 LEARN 내부 프레임에서 기존 검색·비교·퀴즈·저장·검증 로직을 그대로 실행합니다. 프레임 인스턴스에만 표시용 CSS를 추가해 독립 앱의 상단 헤더·하단 메뉴를 숨깁니다. 독립 URL은 그대로 사용할 수 있습니다.
 
-개발 검증만 Node.js, Playwright와 Edge를 사용합니다. 앱의 런타임 의존성이 아닙니다.
+프레임 내부의 상세 탐색은 기존 Glossary 경로와 히스토리를 사용합니다. Hub의 상위 주소가 모든 프레임 내부 이동을 반영하는 구조는 아닙니다. 직접 공유할 용어·비교는 위 표의 Hub 바로가기 경로 또는 독립 Glossary 링크를 사용할 수 있습니다.
+
+`pwa/v2/`는 변경하지 않았습니다.
+
+## 저장과 오프라인
+
+- 읽기 위치: `aiCompass:hub:reading`
+- 즐겨찾기·학습 기록: 기존 `aiCompass:glossary:*` 사용
+- 교사 모드: 현재 세션에서만 유지, 새 접속은 Audience Mode
+- Case Lab 선택: 현재 세션 메모리에서 유지
+- 개인정보·검색 기록·서버 전송 없음
+
+처음 온라인 접속 시 Hub 및 기존 Glossary의 서비스 워커를 각각 등록합니다. 하단에 `오프라인 사용 준비 완료`가 표시된 뒤 핵심 화면을 오프라인으로 사용할 수 있습니다. 처음부터 LEARN을 열지 않았어도 오프라인에서 접근 가능합니다.
+
+Hub 캐시는 `ai-compass-hub-v2-` 전용 이름만 정리합니다. Glossary 등 다른 앱의 캐시는 삭제하지 않습니다. 코드·생성 데이터·재사용 Glossary 변경 시 `service-worker.js`의 CACHE 버전을 올리고 새로고침하세요. 원본 PDF/PPTX 파일은 용량을 고려해 오프라인 캐시에 포함하지 않지만, 학생 발표용 WebP 42장은 포함합니다. HTML 원고와 웹 강의 데이터도 포함합니다.
+
+## 검증
+
+`ACCEPTANCE.md`에 handoff 40개 항목과 smoke A–F를 개별 기록했습니다. `acceptance-results.json`은 실제 브라우저 실행 결과이며 `qa/`에 화면을 남겼습니다.
+
+Node.js, Playwright, Edge가 있는 개발 환경에서 정적 서버를 켠 뒤 실행합니다.
 
 ```powershell
-$env:PLAYWRIGHT_MODULE='C:/Users/DELL/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'
-node pwa/hub/tests/acceptance.cjs
+$env:PLAYWRIGHT_MODULE='C:/Users/user/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'
+node pwa/hub/acceptance.cjs
 ```
 
-일회용 Edge 프로필에서 실행하며 사용자 기록을 변경하지 않습니다. `HUB_URL`로 기본 로컬 주소를 변경할 수 있습니다. 결과는 `tests/results.json`에 저장합니다.
+일반 Node 모듈 위치에 Playwright가 설치되어 있으면 환경변수를 생략할 수 있습니다. 이는 개발 검증 의존성이며 앱 배포물은 외부 런타임 라이브러리를 요청하지 않습니다.
 
-## 오프라인 / 배포 경계
+## 미해결 표시·편집 사항
 
-Hub SW는 Hub 파일·네 데이터·canonical Glossary JSON·여섯 원고와 강의 이미지 42장을 캐시합니다. 별도 scope로 기존 Glossary SW도 등록하여 아직 방문하지 않은 Glossary 화면까지 오프라인 준비합니다. 준비 완료 상태를 확인한 뒤 연결을 끊으세요.
+- 전사본의 표·도식은 추출 순서와 줄바꿈이 남아 있습니다. 특히 PDF 33쪽 사례 비교의 가역성 행, 43쪽 신호등 표시는 셀/색 대응이 충분히 명확하지 않습니다. 추정해서 채우지 않고 전사 텍스트 순서를 보존했습니다. READ의 원본 PDF 링크로 확인할 수 있습니다.
+- 전사본 부록 F의 “본문 5층” 같은 표현도 내용 잠금에 따라 그대로 표시합니다. Hub의 구조도에서는 Control을 다섯 번째 능력층으로 만들지 않습니다.
+- 교사용 스크립트는 수업 현장에서 강의 길이와 어조를 추가 검토할 수 있습니다. 원래 PPTX 노트의 완전한 전사본으로 오인하면 안 됩니다.
+- Android/iOS 실기기 설치, 실제 스크린리더, 전체 WCAG 감사는 미검증입니다.
 
-Hub SW의 정리 대상은 `ai-compass-hub-v2-`로 한정합니다. 다른 PWA 캐시를 제거하지 않습니다. 리소스 변경 시 캐시 버전을 올려야 하며 새 버전은 기존 Hub 탭을 닫은 뒤 활성화됩니다.
+## Intentionally unmigrated content
 
-Pages workflow는 변경하지 않았습니다. 정적 호스팅 시 저장소 상대 경로의 `pwa/glossary/`, canonical Glossary JSON, `docs/manuscript/` 여섯 파일을 함께 제공해야 합니다. Hub 폴더만 독립 배포하면 원본 소스를 로드할 수 없습니다.
+- Case B/C의 **단계형 인터랙션**은 미이관. 전체 사건 원고는 READ에 있습니다.
+- Appendix G의 최신 제품 정보는 의도적으로 채우지 않았습니다. 기존 빈 양식과 작성 안내만 보존합니다.
+- 원문 표의 불명확한 셀 관계를 새 표로 재구성하지 않았습니다.
+- 기존 PPTX의 학생용 화면은 PDF 렌더링으로 42장 전체를 보존했습니다. PPTX 내부 도형을 편집 가능한 HTML 요소로 재작성하지는 않았습니다.
+- 새 PPTX 생성, 복수 강의 덱, 인쇄물, 외부 제품 정보 갱신은 이번 범위 밖입니다.
+- 본문 Part 0–7 및 Appendix A–G의 전사 텍스트 자체는 **53쪽 모두 이관**했습니다.
 
-## 편집 / 미이관 범위
+## 집/사무실 이어하기
 
-[ACCEPTANCE.md](./ACCEPTANCE.md)에 검증 결과와 제한을 기록했습니다.
+작업 전 로컬 변경을 확인한 뒤 같은 브랜치를 가져옵니다.
 
-- 본문: 53/53페이지 전체 이관. Appendix G의 제품 정보는 의도적으로 미작성.
-- 원본 PDF의 정교한 도식·표 레이아웃: 전사 순서로 표시, 시각 복원은 미이관.
-- Teacher Deck: 42장 전체 이관. 원본에 없는 Quick Note 25장, Full Script 42장, 별도 질문/오개념은 미제공. 새 PPTX 생성은 하지 않았습니다.
-- 실제 교사의 스크립트 소요 시간·수업 문장 편집 검수 필요.
-- 기존 Glossary의 원고↔JSON 축약/누락 편집 이슈는 그대로 보존하며 자동 수정하지 않음.
-- 실기기 홈 화면 설치와 전체 스크린리더 흐름은 별도 수동 확인 필요.
+```powershell
+git status --short --branch
+git fetch origin
+git switch feat/ai-compass-hub-v2
+git pull --ff-only origin feat/ai-compass-hub-v2
+```
+
+미커밋 변경은 먼저 보존합니다. 분기된 이력은 확인 후 병합하고 강제 push/reset으로 덮어쓰지 않습니다. 읽기 위치·즐겨찾기·학습 기록은 PC 간 자동 동기화되지 않습니다.

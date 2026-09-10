@@ -1,3 +1,9 @@
-const PREFIX='aiCompass:hub:v2:';
-export function read(key,fallback){try{return JSON.parse(localStorage.getItem(PREFIX+key))??fallback;}catch{return fallback;}}
-export function write(key,value){try{localStorage.setItem(PREFIX+key,JSON.stringify(value));return true;}catch{document.querySelector('#status').textContent='이 브라우저에서 기록을 저장하지 못했습니다.';return false;}}
+const prefix = 'aiCompass:hub:';
+export function read(key, fallback, valid) {
+  try { const value=JSON.parse(localStorage.getItem(prefix+key));return valid(value)?value:fallback; }
+  catch {return fallback;}
+}
+export function write(key,value) {
+  try { localStorage.setItem(prefix+key,JSON.stringify(value)); }
+  catch { document.getElementById('status').textContent='이 브라우저에서는 기록을 저장할 수 없습니다.'; }
+}

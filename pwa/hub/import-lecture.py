@@ -1,8 +1,8 @@
-"""Restore supplied lecture assets; never edit the PPTX/PDF or manuscript."""
+"""Render the supplied lecture PDF as web images without changing source files or teaching data."""
 from pathlib import Path
 from zipfile import ZipFile
 from lxml import etree as E
-import fitz, json, hashlib, posixpath, re
+import fitz, posixpath, re
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[2]
 OUT=ROOT/'pwa/hub'
@@ -13,7 +13,7 @@ def rels(z,name):
  return {x.get('Id'):x for x in E.fromstring(z.read(name))}
 def target(base,name): return posixpath.normpath(posixpath.join(posixpath.dirname(base),name))
 def paras(node):return [''.join(p.xpath('.//a:t/text()',namespaces=ns)) for p in node.xpath('.//a:p',namespaces=ns)]
-deck=[];doc=fitz.open(pdf)
+note_count=0;doc=fitz.open(pdf)
 assets=OUT/'assets/lecture-v01';assets.mkdir(parents=True,exist_ok=True)
 with ZipFile(ppt) as z:
  pres=E.fromstring(z.read('ppt/presentation.xml'));rs=rels(z,'ppt/_rels/presentation.xml.rels')
@@ -32,6 +32,7 @@ with ZipFile(ppt) as z:
      nx=E.fromstring(z.read(target(name,rel.get('Target'))))
      bodies=nx.xpath('//p:sp[p:nvSpPr/p:nvPr/p:ph[@type="body"]]',namespaces=ns)
      note='\n'.join(p for b in bodies for p in paras(b)).strip()
+  note_count+=bool(note)
   pdftext=doc[i-1].get_text()
   # Verify title matching; spatial text ordering differs, so compare ignoring whitespace.
   norm=lambda s:re.sub(r'\s+','',s)
@@ -39,7 +40,4 @@ with ZipFile(ppt) as z:
   pix=doc[i-1].get_pixmap(matrix=fitz.Matrix(1600/doc[i-1].rect.width,1600/doc[i-1].rect.width),alpha=False)
   file=f'slide-{i:02}.webp'
   Image.frombytes('RGB',(pix.width,pix.height),pix.samples).save(assets/file,'WEBP',quality=92,method=6)
-  deck.append({'id':f'slide-{i:02}','number':i,'title':title,'chapter':texts[0] if i not in (1,42) else 'AI COMPASS','student_view':{'image':'./assets/lecture-v01/'+file,'text':texts,'width':pix.width,'height':pix.height},'core_message':None,'quick_note':note or None,'full_script':None,'estimated_time':None,'teacher_question':None,'misconception':None,'emphasis':None,'glossary_links':[],'ebook_links':[],'activity_or_case_links':[],'source':{'pptx':ppt.relative_to(ROOT).as_posix(),'pdf':pdf.relative_to(ROOT).as_posix(),'slide':i,'slide_xml':name,'notes_verbatim':note},'editorial_status':'기존 강의 원본 이관 · 미제공 교사 필드는 비워 둠'})
-data={'version':'1.1','id':'lecture-v01','title':'AI Compass Lecture Deck v0.1','description':'제공된 42장 원본 강의. 학생 화면은 PDF 배치 그대로, 짧은 발표자 노트는 PPTX 원문 그대로.','speakerNotesField':'full_script','sources':{'pptx':str(ppt.relative_to(ROOT)).replace('\\','/'),'pptxSha256':hashlib.sha256(ppt.read_bytes()).hexdigest(),'pdf':str(pdf.relative_to(ROOT)).replace('\\','/'),'pdfSha256':hashlib.sha256(pdf.read_bytes()).hexdigest()},'slides':deck}
-(OUT/'data/teacher-deck.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-print('Restored slides:',len(deck),'existing notes:',sum(bool(s['quick_note']) for s in deck),'full scripts:',sum(bool(s['full_script']) for s in deck))
+print('Rendered slides:',len(doc),'PPTX slides with existing notes:',note_count)

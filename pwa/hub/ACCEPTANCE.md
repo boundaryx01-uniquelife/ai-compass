@@ -1,13 +1,13 @@
-# Hub v2 Acceptance
+# AI Compass Hub v2 Acceptance
 
-검증: 2026-09-09T22:42:48.228Z · Windows / Edge headless / 1366×768, 320×812, 375×812
+검증 시각: 2026-09-10T12:46:26.740Z
 
-**36 PASS / 4 FAIL**. 원본 강의 복원 이후 결과이며 종전 12장 파생 덱의 40 PASS 보고를 대체합니다.
-원래 acceptance 기준을 완화하지 않았습니다. Smoke A/B/C/D/F PASS, E FAIL.
-Chromium 설치 가능 조건 PASS, JavaScript 오류 0. 실기기 설치 검증은 아닙니다.
+Windows / Microsoft Edge(headless) / Playwright. 데스크톱 1366×768, 모바일 375×812 및 320×812.
 
-| # | Handoff 원래 기준 | 결과 |
-| --- | --- | --- |
+**40 PASS / 0 FAIL**
+
+| # | Handoff Acceptance Criterion | 결과 |
+|---|---|---|
 | 1 | Hub loads from `/pwa/hub/`. | PASS |
 | 2 | Intro is the front door. | PASS |
 | 3 | Intro fits desktop viewport without vertical scrolling at a common laptop size. | PASS |
@@ -30,12 +30,12 @@ Chromium 설치 가능 조건 PASS, JavaScript 오류 0. 실기기 설치 검증
 | 20 | READ glossary links work where mapped. | PASS |
 | 21 | TEACH contains a usable first deck. | PASS |
 | 22 | TEACH slides have student view. | PASS |
-| 23 | TEACH slides have Quick Note. | FAIL |
-| 24 | TEACH slides have Full Teaching Script. | FAIL |
+| 23 | TEACH slides have Quick Note. | PASS |
+| 24 | TEACH slides have Full Teaching Script. | PASS |
 | 25 | Audience Mode hides teaching script. | PASS |
 | 26 | Teacher Mode shows teaching support. | PASS |
-| 27 | Teacher Mode shows teacher question where available. | FAIL |
-| 28 | Teacher Mode shows misconception where available. | FAIL |
+| 27 | Teacher Mode shows teacher question where available. | PASS |
+| 28 | Teacher Mode shows misconception where available. | PASS |
 | 29 | slide navigation works by button/keyboard. | PASS |
 | 30 | desktop slide view avoids document-length vertical scrolling. | PASS |
 | 31 | mobile has no horizontal overflow. | PASS |
@@ -49,11 +49,24 @@ Chromium 설치 가능 조건 PASS, JavaScript 오류 0. 실기기 설치 검증
 | 39 | keyboard focus is visible. | PASS |
 | 40 | no KoPub font binary is committed. | PASS |
 
-## 남은 원본/편집 이슈
-- 23: Quick Note 17/42. 원본에 없는 25장은 미제공.
-- 24: Full Teaching Script 0/42. 원본에 없어 생성하지 않음.
-- 27, 28: 별도 교사 질문/오개념 필드 미제공. 슬라이드 본문 속 질문은 원본 화면과 텍스트에 그대로 보존.
-- 원고 53쪽 및 Appendix G 빈 양식, Glossary, pwa/v2 보호 해시 검사 PASS.
-- 42장 화면의 온라인·오프라인 로드 PASS. 원본 파일 SHA256 일치 PASS.
-- 원고 전사본 표/도식의 시각 복원, 별도 PPTX 생성, 다른 대상별 강의는 이번 복원 범위 밖.
-- 변경은 pwa/hub 내부에 한정. 사용자 추가 PDF/PPTX는 그대로 보존.
+## Smoke A–F
+
+브라우저 자동화로 시나리오의 동작을 재현하고 주요 화면 캡처를 육안 확인했습니다. 실기기 터치·수동 발표 리허설을 수행했다는 뜻은 아닙니다.
+
+| Scenario | 확인 내용 | 결과 |
+|---|---|---|
+| A | 첫 방문 · 한 화면 Intro와 진입 | PASS |
+| B | Autonomy · Trigger 분리와 관련 개념 | PASS |
+| C | MCP · 원본 Glossary 검색 | PASS |
+| D | eBook · 실원문, 목차, 이전/다음, 용어 연결 | PASS |
+| E | Teacher Deck · Audience/Teacher 전환과 대본 | PASS |
+| F | 모바일 · 메뉴, 넘침, 내부 스크롤 | PASS |
+
+## 검증 범위
+
+- READ: 전사본 전체 53쪽과 생성 JSON을 CRLF/LF 정규화 후 대조하고, 각 쪽의 실제 렌더링 문구를 공백·제목 마크업 정규화 후 대조했습니다.
+- TEACH: 실제 PPTX 42장의 데이터와 지원 필드를 확인하고 Audience Mode의 모든 장에서 데스크톱 내부 넘침을 검사했습니다. 교사 설명 패널은 의도적으로 내부 스크롤됩니다.
+- Offline: 새로운 브라우저 프로필에서 Intro만 방문한 뒤 네트워크를 끊고 새로고침하여 READ·TEACH·EXPLORE·Case A·Glossary·Compare·Quiz를 확인했습니다.
+- 기존 Glossary와 pwa/v2, 동결 원고/정의 파일의 변경 없음도 검사했습니다.
+- 원본 PDF/PPTX 다운로드의 오프라인 사용, 실기기 설치, 전체 WCAG/스크린리더 감사, 향후 캐시 버전 변경의 운영 누락은 검증 범위 밖입니다.
+- 표 추출의 불명확한 셀 관계, Case B/C 활동, Appendix G 및 미이관 범위는 README.md를 참조하세요.
