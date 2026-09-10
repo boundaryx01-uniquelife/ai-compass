@@ -13,7 +13,7 @@ function compass(active='') {
   return `<div class="compass" aria-label="전체 능력을 감싸는 Control Plane"><div class="control-caption">CONTROL PLANE <span>전체를 가로지르는 통제</span></div><div class="capability" aria-label="네 능력 축">${hub.topics.slice(1,5).map((t,i)=>`<a class="dimension ${active===t.id?'selected':''}" href="#/explore/${t.id}"><span class="dimension-number">0${i+1}</span><strong>${esc(t.label)}</strong><span>${esc(t.question)}</span></a>`).join('')}</div><a class="control-link" href="#/explore/control">${esc(hub.intro.controlQuestion)} <span>↗</span></a></div>`;
 }
 function intro() {
-  main.innerHTML=`<section class="intro"><div class="intro-copy"><p class="eyebrow">A COMPASS FOR THE AI ERA</p><h1>AI를 이름으로<br>판단하지 않습니다.</h1><p class="subtitle">구조를 읽고, 개념을 연결하고,<br>질문을 수업으로 이어갑니다.</p>${link('#/explore/system','COMPASS 열기 →','button primary')}<p class="small intro-foot">EXPLORE · LEARN · READ · TEACH</p></div>${compass()}</section>`;
+  main.innerHTML=`<section class="intro"><div class="intro-copy"><h1>AI Compass</h1><p class="subtitle">AI를 이름으로 판단하지 않습니다.<br><span>구조를 읽고, 개념을 연결하고, 질문을 수업으로 이어갑니다.</span></p></div><figure class="intro-visual"><img src="./hero-compass.png" alt="Model, Context, Action / Tools, Autonomy를 Control이 감싸는 AI Compass 구조를 추상화한 나침반 이미지" width="1536" height="1024" fetchpriority="high"></figure></section>`;
 }
 function explore(id) {
   const topic=hub.topics.find(t=>t.id===id);if(!topic)return missing();
