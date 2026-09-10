@@ -1,0 +1,98 @@
+{
+  "version": "2.0",
+  "topics": [
+    {
+      "id": "system",
+      "label": "SYSTEM",
+      "question": "AI는 무엇으로 이루어져 있는가?",
+      "summaryTerm": "ai-system",
+      "terms": [
+        "ai-model",
+        "ai-service",
+        "ai-system",
+        "agent"
+      ],
+      "page": 3,
+      "compare": "ai-model-ai-service"
+    },
+    {
+      "id": "model",
+      "label": "MODEL",
+      "question": "무엇을 알고 있는가?",
+      "summaryTerm": "ai-model",
+      "terms": [
+        "training",
+        "inference",
+        "llm",
+        "knowledge-cutoff",
+        "hallucination"
+      ],
+      "page": 6,
+      "compare": "hallucination-bias"
+    },
+    {
+      "id": "context",
+      "label": "CONTEXT",
+      "question": "지금 무엇을 보고 있는가?",
+      "summaryTerm": "context",
+      "terms": [
+        "prompt",
+        "rag",
+        "memory",
+        "trust-boundary",
+        "instruction-hierarchy",
+        "prompt-injection"
+      ],
+      "page": 11,
+      "compare": "context-memory"
+    },
+    {
+      "id": "action",
+      "label": "ACTION / TOOLS",
+      "question": "무엇을 할 수 있는가?",
+      "summaryTerm": "tool-use",
+      "terms": [
+        "tool-use",
+        "harness-runtime",
+        "permission",
+        "least-privilege",
+        "sandbox",
+        "mcp"
+      ],
+      "page": 16,
+      "compare": "tool-use-api"
+    },
+    {
+      "id": "autonomy",
+      "label": "AUTONOMY",
+      "question": "얼마나 혼자 가는가?",
+      "summaryTerm": "autonomy",
+      "terms": [
+        "automation",
+        "autonomy",
+        "trigger",
+        "agent"
+      ],
+      "page": 21,
+      "compare": "automation-autonomy"
+    },
+    {
+      "id": "control",
+      "label": "CONTROL",
+      "question": "누가 멈추고 되돌릴 수 있는가?",
+      "summaryTerm": "control-plane",
+      "terms": [
+        "control-plane",
+        "hitl",
+        "observability",
+        "reversibility"
+      ],
+      "page": 26,
+      "compare": "logging-observability"
+    }
+  ],
+  "intro": {
+    "title": "AI를 이름으로 판단하지 않습니다.",
+    "controlQuestion": "누가 멈추고 되돌릴 수 있는가?"
+  }
+}

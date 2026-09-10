@@ -1,0 +1,266 @@
+{
+  "testedAt": "2026-09-10T03:46:30.731Z",
+  "environment": "Windows / Edge headless / Playwright / 1366x768 and 375,320x812",
+  "results": [
+    {
+      "id": 1,
+      "name": "Hub 정적 경로 로드",
+      "status": "PASS"
+    },
+    {
+      "id": 2,
+      "name": "Intro 첫 화면",
+      "status": "PASS"
+    },
+    {
+      "id": 3,
+      "name": "노트북 Intro 한 화면",
+      "status": "PASS"
+    },
+    {
+      "id": 4,
+      "name": "네 능력과 Control 구조",
+      "status": "PASS"
+    },
+    {
+      "id": 5,
+      "name": "Control은 Layer 5 아님",
+      "status": "PASS"
+    },
+    {
+      "id": 6,
+      "name": "최상위 4개 메뉴 접근",
+      "status": "PASS"
+    },
+    {
+      "id": 7,
+      "name": "EXPLORE 6개 경로",
+      "status": "PASS"
+    },
+    {
+      "id": 8,
+      "name": "EXPLORE 독립 주제 화면",
+      "status": "PASS"
+    },
+    {
+      "id": 9,
+      "name": "Hub CORE 30 검색",
+      "status": "PASS"
+    },
+    {
+      "id": 10,
+      "name": "한국어·영문·약어·alias 검색",
+      "status": "PASS"
+    },
+    {
+      "id": 11,
+      "name": "비교 15쌍",
+      "status": "PASS"
+    },
+    {
+      "id": 12,
+      "name": "EXTENDED 정의 비생성",
+      "status": "PASS"
+    },
+    {
+      "id": 13,
+      "name": "Hub 5문제 세션 완료",
+      "status": "PASS"
+    },
+    {
+      "id": 14,
+      "name": "학습 결과 점수화 없음",
+      "status": "PASS"
+    },
+    {
+      "id": 15,
+      "name": "Case A 단계형 조사 완료",
+      "status": "PASS"
+    },
+    {
+      "id": 16,
+      "name": "READ 53쪽 원문 정확성",
+      "status": "PASS"
+    },
+    {
+      "id": 17,
+      "name": "READ 목차 전체 경로",
+      "status": "PASS"
+    },
+    {
+      "id": 18,
+      "name": "READ 이전·다음",
+      "status": "PASS"
+    },
+    {
+      "id": 19,
+      "name": "READ 위치 표시·저장",
+      "status": "PASS"
+    },
+    {
+      "id": 20,
+      "name": "READ 용어 연결",
+      "status": "PASS"
+    },
+    {
+      "id": 21,
+      "name": "TEACH 실제 강의 42장",
+      "status": "PASS"
+    },
+    {
+      "id": 22,
+      "name": "42장 학생 콘텐츠 존재",
+      "status": "PASS"
+    },
+    {
+      "id": 23,
+      "name": "42장 Quick Note",
+      "status": "PASS"
+    },
+    {
+      "id": 24,
+      "name": "42장 Full Teaching Script",
+      "status": "PASS"
+    },
+    {
+      "id": 25,
+      "name": "Audience 교사용 설명 숨김",
+      "status": "PASS"
+    },
+    {
+      "id": 26,
+      "name": "Teacher 설명 표시",
+      "status": "PASS"
+    },
+    {
+      "id": 27,
+      "name": "교사용 질문·시간",
+      "status": "PASS"
+    },
+    {
+      "id": 28,
+      "name": "오개념과 바로잡기",
+      "status": "PASS"
+    },
+    {
+      "id": 29,
+      "name": "슬라이드 버튼·키보드 이동",
+      "status": "PASS"
+    },
+    {
+      "id": 30,
+      "name": "42장 데스크톱 발표 화면",
+      "status": "PASS"
+    },
+    {
+      "id": 31,
+      "name": "모바일 375px·320px",
+      "status": "PASS"
+    },
+    {
+      "id": 32,
+      "name": "외부 런타임 요청 없음",
+      "status": "PASS"
+    },
+    {
+      "id": 33,
+      "name": "Glossary 정의 Hub 코드 비복제",
+      "status": "PASS"
+    },
+    {
+      "id": 34,
+      "name": "독립 Glossary 보존·기능",
+      "status": "PASS"
+    },
+    {
+      "id": 35,
+      "name": "pwa/v2 변경 없음",
+      "status": "PASS"
+    },
+    {
+      "id": 36,
+      "name": "동결 원고·정의 보존 및 핵심 구분",
+      "status": "PASS"
+    },
+    {
+      "id": 37,
+      "name": "다른 PWA 캐시 보존",
+      "status": "PASS"
+    },
+    {
+      "id": 38,
+      "name": "첫 Intro 접속 이후 오프라인 핵심 화면",
+      "status": "PASS"
+    },
+    {
+      "id": 39,
+      "name": "키보드 포커스 표시",
+      "status": "PASS"
+    },
+    {
+      "id": 40,
+      "name": "KoPub 바이너리 미포함",
+      "status": "PASS"
+    }
+  ],
+  "smoke": [
+    {
+      "id": "A",
+      "status": "PASS",
+      "checks": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "B",
+      "status": "PASS",
+      "checks": [
+        7,
+        8,
+        36
+      ]
+    },
+    {
+      "id": "C",
+      "status": "PASS",
+      "checks": [
+        9,
+        10,
+        33
+      ]
+    },
+    {
+      "id": "D",
+      "status": "PASS",
+      "checks": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "id": "E",
+      "status": "PASS",
+      "checks": [
+        21,
+        23,
+        24,
+        25,
+        26
+      ]
+    },
+    {
+      "id": "F",
+      "status": "PASS",
+      "checks": [
+        31,
+        39
+      ]
+    }
+  ]
+}
