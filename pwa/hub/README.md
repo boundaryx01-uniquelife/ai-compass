@@ -28,7 +28,9 @@ URL: <http://127.0.0.1:8877/pwa/hub/>
 & 'C:\Users\user\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m http.server 8877 --bind 127.0.0.1
 ```
 
-`file://`로 열지 마세요. 원본 용어 JSON과 독립 Glossary를 읽으므로 저장소 루트를 제공해야 합니다. `pwa/hub/` 폴더만 배포하는 구성은 지원하지 않습니다. 원격 배포에는 HTTPS가 필요합니다. 기존 GitHub Pages 배포 설정은 이번 구현에서 수정하지 않았습니다.
+`file://`로 열지 마세요. 원본 용어 JSON과 독립 Glossary를 읽으므로 저장소 루트를 제공해야 합니다. `pwa/hub/` 폴더만 배포하는 구성은 지원하지 않습니다. 원격 배포에는 HTTPS가 필요합니다.
+
+GitHub Pages 워크플로는 Hub와 기존 Glossary, 공용 용어 데이터, 원본 PDF/PPTX를 하나의 정적 사이트로 묶습니다. 저장소 Pages 루트는 `pwa/hub/#/intro`로 이동하며 독립 Glossary 주소도 계속 유지됩니다. 기능 브랜치에서는 Actions의 `workflow_dispatch`로 배포 화면을 갱신하고, `main` 반영 후에는 관련 파일 변경 시 자동 배포됩니다.
 
 ## 화면과 라우트
 
