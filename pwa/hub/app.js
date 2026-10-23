@@ -145,7 +145,7 @@ async function init() {
     if(glossary.format!=='ai-compass-glossary'||glossary.version!=='1.0'||glossary.terms.length!==30||book.sections.length!==53||deck.slides.length!==42)throw Error('지원하지 않는 자료 구성입니다.');
     render();
     if('serviceWorker' in navigator){try {
-      const registrations=await Promise.all([navigator.serviceWorker.register('./service-worker.js'),navigator.serviceWorker.register('../glossary/service-worker.js')]);
+      const registrations=await Promise.all([navigator.serviceWorker.register('./service-worker.js',{updateViaCache:'none'}),navigator.serviceWorker.register('../glossary/service-worker.js')]);
       await Promise.all(registrations.map(reg=>new Promise((resolve,reject)=>{
         if(reg.active && !reg.installing && !reg.waiting)return resolve();
         const worker=reg.installing||reg.waiting||reg.active;
